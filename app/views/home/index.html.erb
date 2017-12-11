@@ -65,7 +65,11 @@ img {margin-bottom: -7px}
 
 <!-- Photo Grid -->
 <div class="w3-row" id="myGrid" style="margin-bottom:128px">
+  <% @picture.each do |f| %>
+
+    <%= image_tag f.image.thumb.url %>
   
+  <%end%>
 
 <!-- End Page Content -->
 </div>

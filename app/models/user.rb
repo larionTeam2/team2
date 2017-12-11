@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
 
 
-has_many :pictures
-has_one :profile
+has_many :pictures , dependent: :destroy
+has_one :profile , dependent: :destroy
 end
