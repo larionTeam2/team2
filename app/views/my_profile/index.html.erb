@@ -19,7 +19,10 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     </a>
     
     <div class="w3-round" style="width: 45%">
-      
+      <!-- avatar here -->
+      <% @myprofile.each do |profile| %>
+        <%= image_tag profile.image.avatar.url %>
+      <% end %>
     </div>
     <h4><b> 
      
@@ -61,7 +64,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
   <!-- Header -->
   <header id="portfolio">
-    <a href="#"><img src="/w3images/avatar_g2.jpg" style="width:65px;" class="w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity"></a>
+    
+    
+    <% @myprofile.each do |f| %>
+      <%= image_tag f.image.avatar.url , :class => "w3-circle w3-right w3-margin w3-hide-large w3-hover-opacity", :style => "width:65px;" %>
+    <%end%>
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
     <div class="w3-container">
     <h1><b>View it!</b></h1>
@@ -81,28 +88,24 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </header>
   
   <!-- First Photo Grid-->
-  <% @picture.each do |picture| %>
+  
     <div class="w3-row-padding">
+    <% @picture.each do |picture| %>
       <div class="w3-third w3-container w3-margin-bottom">
         <!-- noi nay de show hinh -->
-
+        
+          <%= image_tag picture.image.thumb.url %>
+        
         <div class="w3-container w3-white">
           <p><b><%=picture.name%></b></p>
           <p><%= picture.description %></p>
         </div>
 
       </div>
+      <% end %>
     </div>
-  <% end %>
-  <div class="w3-row-padding">
-    <div class="w3-third w3-container w3-margin-bottom">
-      <img src="/w3images/mountains.jpg" alt="Norway" style="width:100%" class="w3-hover-opacity">
-      <div class="w3-container w3-white">
-        <p><b>Lorem Ipsum</b></p>
-        <p>Praesent tincidunt sed tellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue gravida diam non fringilla.</p>
-      </div>
-    </div>
-  </div>
+  
+  
   </div>
 
   <!-- Pagination -->

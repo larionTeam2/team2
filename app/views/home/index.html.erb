@@ -35,11 +35,12 @@ img {margin-bottom: -7px}
   <div class="w3-bar-block w3-center">
     <a href="http://localhost:3000" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Home</a>
 
-    <a href="http://localhost:3000/users/sign_in" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Login</a>
+    
+    <%= link_to "Login",  new_user_session_path , :class => "w3-bar-item w3-button w3-text-grey w3-hover-black"%>
     <% if current_user.present? %>
-        <a class="w3-bar-item w3-button w3-text-grey w3-hover-black"> <%= link_to "My Profile", my_profile_index_url %> </a>
-        <a class="w3-bar-item w3-button w3-text-grey w3-hover-black"></a>
-        <a class="w3-bar-item w3-button w3-text-grey w3-hover-black"><%= link_to "Logout", destroy_user_session_path, method: :delete %></a>
+      
+        <%= link_to "My Profile", my_profile_index_url, :class => "w3-bar-item w3-button w3-text-grey w3-hover-black" %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete , :class => "w3-bar-item w3-button w3-text-grey w3-hover-black"%>
     <% end %>
     <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">About</a>
     <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Photos</a>
