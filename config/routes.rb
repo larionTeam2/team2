@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'my_profile/index'
+
   resources :profiles
   get 'profile/index'
+
+  post 'pictures/new'
 
   resources :pictures
   devise_for :users
