@@ -14,6 +14,6 @@
   <strong>Image:</strong>
   <%= image_tag @picture.image.fullview.url %>
 </p>
-
+<%= link_to 'Delete', @picture, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+<%= link_to 'Back', my_profile_index_url %>

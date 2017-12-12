@@ -20,6 +20,12 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
 body,h1 {font-family: "Montserrat", sans-serif}
 img {margin-bottom: -7px}
@@ -33,14 +39,16 @@ img {margin-bottom: -7px}
     <i class="fa fa-remove"></i>
   </a>
   <div class="w3-bar-block w3-center">
-    <a href="http://localhost:3000" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Home</a>
+    
 
     
-    <%= link_to "Login",  new_user_session_path , :class => "w3-bar-item w3-button w3-text-grey w3-hover-black"%>
+    
     <% if current_user.present? %>
       
         <%= link_to "My Profile", my_profile_index_url, :class => "w3-bar-item w3-button w3-text-grey w3-hover-black" %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete , :class => "w3-bar-item w3-button w3-text-grey w3-hover-black"%>
+        <%else%>
+        <%= link_to "Login",  new_user_session_path , :class => "w3-bar-item w3-button w3-text-grey w3-hover-black"%>
     <% end %>
     <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">About</a>
     <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Photos</a>
@@ -69,11 +77,50 @@ img {margin-bottom: -7px}
     
     
     <%= image_tag f.image.thumb.url %>
+
   
   <%end%>
 
 <!-- End Page Content -->
 </div>
+<!--//////////////////////////////////////////////////////////////////
+  <% @picture.each do |f| %>
+  <div class="row d4-image-index">
+    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <%= image_tag f.image.thumb.url, :class => "card-img-top" %>
+        <div class="overlay">
+          <div class="btnLike">
+            <a class="fa fa-thumbs-up btn" href="#" role="button"> Like</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%end%>
+      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    
+                    <% @picture.each do |f| %>
+                      <%= image_tag f.image.thumb.url, :class => "card-img-top" %> 
+                    <%end%>
+                    <div class="overlay">
+                        <div class="btnLike">
+                            <a class="fa fa-thumbs-up btn" href="#" role="button"> Like</a>
+                        </div>
+
+                        <div class="btnDownload">
+                            <a class="fa fa-download btn btn-primary" title="Download Here!" href="#" role="button"></a>
+                        </div>
+
+                        <div class="btnComment">
+                            <a class="fa fa-commenting-o btn btn-success" href="#" role="button"> Comment</a>
+                        </div>
+                    </div>
+  </div>
+//////////////////////////////////////////////////////////////////-->
+
+
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px"> 
