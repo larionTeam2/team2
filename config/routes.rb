@@ -6,8 +6,11 @@ Rails.application.routes.draw do
 
   post 'pictures/new'
 
+ 
+
   resources :pictures
   devise_for :users
+  resources :users
   get 'home/index'
 
   root 'home#index'
