@@ -34,6 +34,15 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'acts_as_votable'
 
+
+#add bootstrap
+
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
+
+gem 'jquery-ui-rails'
+gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
