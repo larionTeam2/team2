@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
  
 
-  resources :pictures
+  resources :pictures do
+    resources :comments
+  end
+
+  
   devise_for :users
   resources :users
   get 'home/index'
