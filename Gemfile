@@ -34,6 +34,9 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'acts_as_votable'
 
+gem 'bootstrap-sass'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
