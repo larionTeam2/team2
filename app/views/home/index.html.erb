@@ -50,7 +50,8 @@ img {margin-bottom: -7px}
         <%else%>
         <%= link_to "Login",  new_user_session_path , :class => "w3-bar-item w3-button w3-text-grey w3-hover-black"%>
     <% end %>
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">About</a>
+    <!--<a href="/about" class="w3-bar-item w3-button w3-text-grey w3-hover-black">About</a>-->
+    <%= link_to  "About", about_path, :class => "w3-bar-item w3-button w3-text-grey w3-hover-black" %>
     <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Photos</a>
     
     <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Contact</a>

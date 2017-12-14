@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :users
   get 'home/index'
   
+  get '/about', to: "home#about"
   get 'pictures/show'
   root 'home#index'
 
