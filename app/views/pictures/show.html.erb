@@ -56,7 +56,7 @@ and is wrapped around the whole page content, except for the footer in this exam
             <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
             <p class="w3-left">
-              <button class="w3-button w3-white w3-border" onclick="likeFunction(this)">
+              <button class="w3-button w3-white w3-border btn-Like" onclick="likeFunction(this)" id="btnLike">
                 <b>
                   <i class="fa fa-thumbs-up"></i> Like</b>
               </button>
@@ -296,6 +296,8 @@ and is wrapped around the whole page content, except for the footer in this exam
         x.className = x.className.replace(" w3-show", "");
       }
     }
+
+    document.getElementById("btnLike").click();
 
     function likeFunction(x) {
       x.style.fontWeight = "bold";

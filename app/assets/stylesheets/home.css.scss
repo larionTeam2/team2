@@ -145,13 +145,13 @@
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 10px;
     max-height: 95px;
-    .logo-icon {       
+    .logo-icon-footer {       
         float: left; 
         color: white;
         text-align: center;
         margin-left: 18%;
         font-size: 16px;
-        .fa {
+        .a-icon {
             margin-top: 10px;
             font-size: 20px;
             padding: 3px;
@@ -160,7 +160,7 @@
             text-decoration: none; //margin: 5px 2px;
             border-radius: 15%;
         }
-        .fa:hover {
+        .a-icon:hover {
             opacity: 0.7;
         }
     }
