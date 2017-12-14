@@ -34,6 +34,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'acts_as_votable'
 
+<<<<<<< HEAD
 
 #add bootstrap
 
@@ -43,6 +44,11 @@ gem 'autoprefixer-rails'
 
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
+=======
+gem 'bootstrap-sass'
+
+
+>>>>>>> origin
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

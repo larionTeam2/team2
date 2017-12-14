@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'view_image/index'
+
   get 'my_profile/index'
 
   resources :profiles
