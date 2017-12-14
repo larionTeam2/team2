@@ -17,7 +17,7 @@
     font-family: "Oswald";
   }
 
-  body {
+  .show-picture{
     font-family: "Open Sans";
   }
 
@@ -26,11 +26,10 @@
   }
 </style>
 
-<body class="w3-light-grey">
+<body class="w3-light-grey show-picture">
   <!-- w3-content defines a container for fixed size centered content, 
 and is wrapped around the whole page content, except for the footer in this example -->
   <div class="w3-content" style="max-width:1600px">
-
     <!-- Grid -->
     <div class="w3-row w3-padding w3-border">
 
@@ -283,7 +282,8 @@ and is wrapped around the whole page content, except for the footer in this exam
     </div>
   </div>
 
-  
+   <!-- Footer -->
+   <%= render 'layouts/footer' %>
 
   <script>
     // Toggle between hiding and showing blog replies/comments
@@ -302,8 +302,7 @@ and is wrapped around the whole page content, except for the footer in this exam
       x.innerHTML = "✓ Liked";
     }
   </script>
-  <!-- Footer -->
-  <%= render 'layouts/footer' %>
+ 
 </body>
 
 </html>
