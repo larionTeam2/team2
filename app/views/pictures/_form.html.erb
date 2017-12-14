@@ -1,3 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<header>
+
+	<span>
+	
+	
+	
+	
+	</span>
+
+</header>
+
+
 <%= form_with(model: picture, local: true) do |form| %>
   <% if picture.errors.any? %>
     <div id="error_explanation">
@@ -10,23 +26,58 @@
       </ul>
     </div>
   <% end %>
+  
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Upload Image</h1>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="" class="img-thumbnail" >
+        <h6>Upload photo...</h6>
+        
+        <%= form.file_field :image, id: :profile_image,class:"text-center center-block well well-sm",type:"file"%>
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      
+      <h3>...</h3>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Name :</label>
+          <div class="col-lg-8">
+            
+          <%= form.text_field :name, id: :picture_name ,class:"form-control" ,type:"text"%></br>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Description :</label>
+          <div class="col-lg-8">
+          <%= form.text_field :description, id: :picture_description, class:"form-control",type:"text" %></br>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+          <input type="submit" class="btn btn-first", value="Upload"> &nbsp &nbsp &nbsp
+          <span></span>
+          <%= current_user.email%> <span> ...</span> &nbsp
+          <span></span>
+          <%= link_to 'Back', pictures_path %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :picture_name %>
+            <span></span>
+            
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :picture_description %>
-  </div>
+<%end%>
+</body>
+</html>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image, id: :picture_image %>
-  </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+

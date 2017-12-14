@@ -207,12 +207,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-<<<<<<< d8510f2cc0972734e6e0c5b7e7660ac386045c22
   acts_as_votable
-=======
   autoprefixer-rails
   bootstrap-sass (~> 3.2.0)
->>>>>>> layoutloginsignup
   byebug
   capybara (~> 2.13)
   carrierwave
