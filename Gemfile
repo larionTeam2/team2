@@ -34,8 +34,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'acts_as_votable'
 
-<<<<<<< HEAD
-
 #add bootstrap
 
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -44,11 +42,14 @@ gem 'autoprefixer-rails'
 
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
-=======
-gem 'bootstrap-sass'
 
 
->>>>>>> origin
+#login gg fb
+
+
+gem "omniauth-google-oauth2", "~> 0.2.1"
+gem "omniauth-facebook"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
