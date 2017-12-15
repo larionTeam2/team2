@@ -7,27 +7,28 @@
 <head>
     <meta charset="utf-8">
      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+     <link rel="stylesheet" type="text/css" href="app/assets/stylesheets/picture.scss">
 </head>
 <body>
     <div class="w3-row", style="padding-top: 5em">
         <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
-                    <%= image_tag @picture.image.fullview.url , width: "100%", height: "auto"  %>
-        
+                <%= image_tag @picture.image.fullview.url , width: "100%", height: "auto"  %>  
 
         </div>
         <div class="w3-col m12 l4", style="padding-left: 2em; padding-right: 0.1em">
             <h1>Comments</h1>
-            <div class="vertical-menu", style="height: 40em; overflow-y: auto">
+            <div>  </div>
+
+            <div class="vertical-menu", style="height: 30em; overflow-y: auto">
                 
                     <% @picture.comments.each do |comment| %>
- 
-                <p>   
-                    <strong><%= comment.commenter %></strong>
-                    :
-                    <p><%= comment.body %></p>
+                <p style="word-wrap: break-word;">
+                    <strong><%= comment.commenter  %></strong>
+                    :<%= comment.body %>
                     
                 </p>
                 <% end %>
+
             </div>
             <div class="w3-card-2">
               <%= form_with(model: [ @picture, @picture.comments.build ], local: true) do |form| %>

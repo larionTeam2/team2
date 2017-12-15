@@ -1,14 +1,4 @@
-<!--
 
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
-<%= link_to "Sign out" , destroy_user_session_path, method: :delete %>
-<li>
-  <%= link_to('Login', new_user_session_path)  %>  
-  </li>
-
-  -->
 
 
 
@@ -78,11 +68,8 @@ img {margin-bottom: -7px}
     <%= link_to f do %>
       <%= image_tag f.image.thumb.url %>
     <% end %>
-    <% f.user_id %>
-    <% @uname = Profile.where(:user_id => f.user_id) %>
-    <% @uname.each do |n| %>
-      <%= n.name %>
-    <% end %>
+    
+    
 
   
   <%end%>
