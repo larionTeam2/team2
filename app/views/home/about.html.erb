@@ -21,81 +21,82 @@
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+                <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">    
 </head>
 
-<body>    
-        <div class="top-background-about">
-            <div class="photos cleafix">
-                <div class="photo">
-                    <%= image_tag  "top-about/1.png" %>
-                </div>
-
-                <div class="photo">
-                    <%= image_tag  "top-about/2.png" %>
-                </div>
-                <div class="photo">
-                    <%= image_tag  "top-about/3.png" %>
-                </div>
-                <div class="photo">
-                    <%= image_tag  "top-about/4.png" %>
-                </div>
-                <div class="photo">
-                    <%= image_tag  "top-about/5.png" %>
-                </div>
+<body>
+    <div class="top-background-about">
+        <div class="photos cleafix">
+            <div class="photo">
+                <%= image_tag  "top-about/1.png" %>
             </div>
 
-            <div class="center">
-                <div class="intro">
-                    <h1 class="on-image-h1">The place for photographers to grow</h1>
-                    <p class="on-image-p">500px helps over 12 million photographers expand their creative networks of friends, colleagues and mentors,
-                        learn new technical and aesthetic skills, and make money doing what they love.</p>
-                </div>
+            <div class="photo">
+                <%= image_tag  "top-about/2.png" %>
+            </div>
+            <div class="photo">
+                <%= image_tag  "top-about/3.png" %>
+            </div>
+            <div class="photo">
+                <%= image_tag  "top-about/4.png" %>
+            </div>
+            <div class="photo">
+                <%= image_tag  "top-about/5.png" %>
             </div>
         </div>
-        <!-- About Content -->
-        <div class="container" style="margin-bottom: 5%">
-            <!-- Introduction Row -->
-            <section class="About-Prev-Tab">
-                <h1 class="my-4"> Share Your Passion to the World
-                </h1>
-                <p>
-                    From mobile photographers to professionals, ViewIt has the products and features to take your photography to the next level.
-                </p>
-            </section>
 
-            <!-- Team Members Row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="my-4">Our Team</h2>
-                </div>
-                <div class="col-lg-4 col-sm-6 text-center mb-4">
-                    <%= image_tag  "taibeo.png", size: "200x200", :class => "rounded-circle img-fluid d-block mx-auto" %>
-                        <h3>Tài Béo
-                            <small></small>
-                        </h3>
-                        <p>Cold Blood with True Love</p>
-                </div>
-                <div class="col-lg-4 col-sm-6 text-center mb-4">
-                    <%= image_tag  "bathanh.png", size: "200x200", :class => "rounded-circle img-fluid d-block mx-auto" %>
-                        <h3>Bá Thành
-                            <small></small>
-                        </h3>
-                        <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-                </div>
-                <div class="col-lg-4 col-sm-6 text-center mb-4">
-                    <%= image_tag  "phatle.png", size: "200x200", :class => "rounded-circle img-fluid d-block mx-auto" %>
-                        <h3>Phát Lê
-                            <small></small>
-                        </h3>
-                        <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-                </div>
+        <div class="center">
+            <div class="intro">
+                <h1 class="on-image-h1">The place for photographers to grow</h1>
+                <p class="on-image-p">500px helps over 12 million photographers expand their creative networks of friends, colleagues and mentors,
+                    learn new technical and aesthetic skills, and make money doing what they love.</p>
             </div>
-        </div>        
-        <!-- /.container -->
+        </div>
+    </div>
+    <!-- About Content -->
+    <div class="container" style="margin-bottom: 5%">
+        <!-- Introduction Row -->
+        <section class="About-Prev-Tab">
+            <h1 class="my-4"> Share Your Passion to the World
+            </h1>
+            <p>
+                From mobile photographers to professionals, ViewIt has the products and features to take your photography to the next level.
+            </p>
+        </section>
+
+        <!-- Team Members Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="my-4">Our Team</h2>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center mb-4">
+                <%= image_tag  "taibeo.png", size: "200x200", :class => "rounded-circle img-fluid d-block mx-auto" %>
+                    <h3>Tài Béo
+                        <small></small>
+                    </h3>
+                    <p>Cold Blood with True Love</p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center mb-4">
+                <%= image_tag  "bathanh.png", size: "200x200", :class => "rounded-circle img-fluid d-block mx-auto" %>
+                    <h3>Bá Thành
+                        <small></small>
+                    </h3>
+                    <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+            </div>
+            <div class="col-lg-4 col-sm-6 text-center mb-4">
+                <%= image_tag  "phatle.png", size: "200x200", :class => "rounded-circle img-fluid d-block mx-auto" %>
+                    <h3>Phát Lê
+                        <small></small>
+                    </h3>
+                    <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+    <%= render  "layouts/footer" %>
 </body>
 
-<!-- script changed image About-Photo about 3 second --> 
+<!-- script changed image About-Photo about 3 second -->
 <script>
     var myIndex = 0;
     carousel();
