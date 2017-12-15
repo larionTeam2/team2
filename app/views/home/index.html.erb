@@ -71,8 +71,21 @@ img {margin-bottom: -7px}
 
 <!-- Photo Grid -->
 <div class="w3-row" id="myGrid" style="margin-bottom:128px">
-  <% @picture.each do |f| %>      
-    <%= link_to(image_tag f.image.thumb.url()) %>
+
+  
+  <% @picture.each do |f| %>
+    
+    <%= link_to f do %>
+      <%= image_tag f.image.thumb.url %>
+    <% end %>
+    <% f.user_id %>
+    <% @uname = Profile.where(:user_id => f.user_id) %>
+    <% @uname.each do |n| %>
+      <%= n.name %>
+    <% end %>
+
+  
+
   <%end%>
 
 <!-- End Page Content -->
