@@ -87,7 +87,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   
     <div class="w3-row-padding">
       <% @picture.each do |picture| %>
-        <div class="w3-third w3-container w3-margin-bottom">
+        <div class="w3-third w3-container w3-margin-bottom" onclick="document.getElementById('id01').style.display='block'">
           <!-- noi nay de show hinh -->
             <%= link_to image_tag(picture.image.thumb.url), picture %>
             <% image_tag picture.image.thumb.url %>
