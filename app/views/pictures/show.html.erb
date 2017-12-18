@@ -147,7 +147,7 @@ and is wrapped around the whole page content, except for the footer in this exam
                 </div>
                 <%= @picture.description %>
                 
-                <!-- Comment -->
+                
                                
               </div>
           </div>
@@ -213,7 +213,11 @@ and is wrapped around the whole page content, except for the footer in this exam
               <%= form_with(model: [ @picture, @picture.comments.build ], local: true) do |form| %>
                 <p>
                     <%= form.label Comment %><br>
-                    <%= form.text_field :body, :style => "width: 400px" %>
+                    <% if current_user.present? %>
+                      <%= form.text_field :body, :style => "width: 400px" %>
+                      <% else %>
+                        <p style="padding: 40px"><strong><%= link_to "Sign in", new_user_session_path %></strong> to comment</p>
+                    <% end %>
                 </p>
                 
                 <% end %>
