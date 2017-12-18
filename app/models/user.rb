@@ -2,9 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
-
+         :recoverable, :rememberable, :trackable, :validatable ,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]         
 
 
 has_many :pictures , dependent: :destroy
@@ -29,5 +28,11 @@ def self.from_omniauth(auth)
   end
 end
 
+
+private
+
+  def avatar_size_validation
+    errors[:avatar] << "should be less than 5MB" if avatar.size > 3.megabytes
+  end
 
 end
