@@ -36,7 +36,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div>
   <div class="w3-bar-block">
     <a href="home" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ViewIt!</a> 
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
+    <a href="/about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
 
     <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
 
@@ -87,7 +87,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   
     <div class="w3-row-padding">
       <% @picture.each do |picture| %>
-        <div class="w3-third w3-container w3-margin-bottom">
+        <div class="w3-third w3-container w3-margin-bottom" onclick="document.getElementById('id01').style.display='block'">
           <!-- noi nay de show hinh -->
             <%= link_to image_tag(picture.image.thumb.url), picture %>
             <% image_tag picture.image.thumb.url %>

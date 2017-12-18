@@ -1,3 +1,49 @@
+<!--
+<%= link_to 'Delete', @picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', my_profile_index_url %>
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+     
+</head>
+<body>
+    <div class="w3-row", style="padding-top: 5em">
+        <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
+                    <%= image_tag @picture.image.fullview.url , size: "750x750"  %>
+        
+        </div>
+        <div class="w3-col m12 l4", style="padding-left: 2em; padding-right: 0.1em">
+            <h1>Comments</h1>
+            <div class="vertical-menu", style="height: 40em; overflow-y: auto">
+                
+                    <% @picture.comments.each do |comment| %>
+ 
+                <p>   
+                    <strong><%= comment.commenter %></strong>
+                    <i class="fa fa-globe" aria-hidden="true" style="color: blue"></i> <%= Time.zone.now %>
+                    <p><%= comment.body %></p>
+                    
+                </p>
+                <% end %>
+            </div>
+            <div class="w3-card-2">
+              <%= form_with(model: [ @picture, @picture.comments.build ], local: true) do |form| %>
+                
+                <p>
+                    <%= form.label Comment %><br>
+                    <%= form.text_field :body %>
+                </p>
+                
+                <% end %>
+            </div>
+        </div>
+    </div>
+</body>
+-->
+
 <!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
@@ -45,25 +91,20 @@ and is wrapped around the whole page content, except for the footer in this exam
         <!-- Blog entry -->
         <div class="w3-container w3-white w3-margin w3-padding-large">
           <div class="w3-center">
-            <h3>TITLE HEADING</h3>
-            <h5>Title description,
-              <span class="w3-opacity">May 2, 2016</span>
+            <h3><%= @picture.name %></h3>
+            <h5><%=  %>
+              <span class="w3-opacity"><%= @picture.created_at %></span>
             </h5>
           </div>
 
           <div class="w3-justify">                
-            <%= image_tag @picture.image.fullview.url(@picture), :class => "w3-padding-16 id-pic-des"%>
+            <%= image_tag @picture.image.fullview.url(@picture), :class => "w3-padding-16 id-pic-des"%>             
               <p>
-                <strong>More Hats!</strong> I am crazy about hats these days. Some text about this blog entry. Fashion fashion and
-                mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat.
-                Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper.
-                Praesent tincidunt sedtellus ut rutrum. Sed vitae justo condimentum, porta lectus vitae, ultricies congue
-                gravida diam non fringilla.</p>
-              <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                <p class="w3-left">
-                  <button class='' id='btn-like'><i class="fa fa-thumbs-up"></i> Like</b></button>
-                </p>                
+                <%= @picture.description %>
+              </p>
+              <p class="w3-left">
+                    <button class="" id="btn-like"><i class="fa fa-thumbs-up"></i> Like</b></button>
+              </p>
               <p class="w3-right">
                 <button class="w3-button w3-black" onclick="myFunction('demo1')" id="myBtn">
                   <b>Replies  </b>
@@ -92,8 +133,9 @@ and is wrapped around the whole page content, except for the footer in this exam
                 <div class="w3-col l10 m9">        
                     <% @picture.comments.each do |comment| %>
                                 
-                    <h4><%= comment.commenter %>
-                        <span class="w3-opacity w3-medium"><i class="fa fa-globe" aria-hidden="true" style="color: blue"></i> <%= DateTime.now %></span>
+                    <h4>
+                      <%= comment.commenter %>
+                        <span class="w3-opacity w3-medium"><i class="fa fa-globe" aria-hidden="true" style="color: blue"></i> <%= Time.zone.now %></span>
                     </h4>
                     <p> <%= comment.body %></p>
                     <% end %>
@@ -301,6 +343,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     </div>
   </div>  
     <script type="text/javascript">
+
       // Toggle between hiding and showing blog replies/comments
       document.getElementById("myBtn").click();
       function myFunction(id) {
@@ -311,7 +354,6 @@ and is wrapped around the whole page content, except for the footer in this exam
           x.className = x.className.replace(" w3-show", "");
         }
       }
-
       $(document).ready(function(){
         console.log('document ready!');
         var i = 0;
@@ -333,6 +375,7 @@ and is wrapped around the whole page content, except for the footer in this exam
           }
         });
       });
+
     </script>
 </body>
 

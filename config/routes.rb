@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :searches
+  get 'search/new'
   get 'view_image/index'
 
   get 'my_profile/index'
@@ -16,15 +18,15 @@ Rails.application.routes.draw do
 
   
   devise_for :users
-
- 
-
   
   get '/about', to: "home#about"
   get 'pictures/show'
 
   get 'users/sign_up'
   get 'users/password/new'
+
+  resources :users
+  get 'home/index'
 
   root 'home#index'
 
