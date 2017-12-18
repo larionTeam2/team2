@@ -1,58 +1,64 @@
-
-
-
-
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<title>ViewIt!</title>
+<title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 <style>
-body,h1 {font-family: "Montserrat", sans-serif}
-img {margin-bottom: -7px}
-.w3-row-padding img {margin-bottom: 12px}
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
 </style>
-<body>
+<header>
 
-<!-- Sidebar -->
-<nav class="w3-sidebar w3-black w3-animate-top w3-xxlarge" style="display:none;padding-top:150px" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-black w3-xxlarge w3-padding w3-display-topright" style="padding:6px 24px">
-    <i class="fa fa-remove"></i>
-  </a>
-  <div class="w3-bar-block w3-center">
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <%= link_to "Home", home_index_url, :class => "w3-bar-item w3-button w3-padding-large" %>
     
-
-    
-    
-    <% if current_user.present? %>
+    <% if current_user.present?%>
       
-        <%= link_to "My Profile", my_profile_index_url, :class => "w3-bar-item w3-button w3-text-grey w3-hover-black" %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete , :class => "w3-bar-item w3-button w3-text-grey w3-hover-black"%>
-        <%else%>
-        <%= link_to "Login",  new_user_session_path , :class => "w3-bar-item w3-button w3-text-grey w3-hover-black"%>
+        <div class="w3-dropdown-hover w3-hide-small">
+          <button class="w3-padding-large w3-button" title="More"><%= @username %> <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <%= link_to "Upload", new_picture_path, :class => "w3-bar-item w3-button" %>
+            <%= link_to "My profile", my_profile_index_url, :class => "w3-bar-item w3-button" %>
+            <%= link_to "Sign out", destroy_user_session_path,method: :delete ,:class => "w3-bar-item w3-button" %>
+          </div>
+        </div>
+      <% else %>
+        <div class="w3-dropdown-hover w3-hide-small">
+          <button class="w3-padding-large w3-button" title="More">Sign in <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <%= link_to "Sign in", new_user_session_path, :class => "w3-bar-item w3-button" %>
+            <%= link_to "Sign up", new_user_registration_path, :class => "w3-bar-item w3-button" %>
+          </div>
+        </div>
     <% end %>
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">About</a>
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Photos</a>
     
-    <a href="#" class="w3-bar-item w3-button w3-text-grey w3-hover-black">Contact</a>
+    <input type="text" placeholder="Search.." class="w3-padding-large w3-hover-red w3-hide-small w3-right ">
   </div>
-</nav>
+</div>
 
-<!-- !PAGE CONTENT! -->
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <% if current_user.present? %>
+    <input type="text" placeholder="Search.." class="w3-padding-large w3-hover-red w3-hide-small w3-right ">
+   <%= link_to "Upload", new_picture_path, :class => "w3-bar-item w3-button w3-padding-large" %> 
+   <%= link_to "My profile", my_profile_index_url, :class => "w3-bar-item w3-button w3-padding-large" %>
+   <%= link_to "Sign out", destroy_user_session_path,method: :delete ,:class => "w3-bar-item w3-button w3-padding-large" %>
+  <% end %>
+
+<!-- Page content -->
+<body>
 <div class="w3-content" style="max-width:1500px">
+</header>
 
 <!-- Header -->
-<div class="w3-opacity">
-<span class="w3-button w3-xxlarge w3-white w3-right" onclick="w3_open()"><i class="fa fa-bars"></i></span> 
+<div class="w3-opacity" style="padding-top: 5em">
+
 <div class="w3-clear"></div>
 <header class="w3-center w3-margin-bottom">
   <h1><b>ViewIt!</b></h1>
@@ -62,7 +68,7 @@ img {margin-bottom: -7px}
 </div>
 
 <!-- Photo Grid -->
-<div class="w3-row" id="myGrid" style="margin-bottom:128px">
+<div class="w3-row" id="myGrid" style="margin-bottom:128px; margin-left: 50px">
   <% @picture.each do |f| %>
     
     <%= link_to f do %>
@@ -74,77 +80,44 @@ img {margin-bottom: -7px}
   
   <%end%>
 
-<!-- End Page Content -->
-</div>
-<!--//////////////////////////////////////////////////////////////////
-  <% @picture.each do |f| %>
-  <div class="row d4-image-index">
-    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-      <div class="card h-100">
-        <%= image_tag f.image.thumb.url, :class => "card-img-top" %>
-        <div class="overlay">
-          <div class="btnLike">
-            <a class="fa fa-thumbs-up btn" href="#" role="button"> Like</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <%end%>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    
-                    <% @picture.each do |f| %>
-                      <%= image_tag f.image.thumb.url, :class => "card-img-top" %> 
-                    <%end%>
-                    <div class="overlay">
-                        <div class="btnLike">
-                            <a class="fa fa-thumbs-up btn" href="#" role="button"> Like</a>
-                        </div>
-
-                        <div class="btnDownload">
-                            <a class="fa fa-download btn btn-primary" title="Download Here!" href="#" role="button"></a>
-                        </div>
-
-                        <div class="btnComment">
-                            <a class="fa fa-commenting-o btn btn-success" href="#" role="button"> Comment</a>
-                        </div>
-                    </div>
-  </div>
-//////////////////////////////////////////////////////////////////-->
-
-
-
+</body>
 <!-- Footer -->
-<footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-opacity w3-xlarge" style="margin-top:128px"> 
-  <i class="fa fa-facebook-official w3-hover-opacity"></i>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
-  <i class="fa fa-linkedin w3-hover-opacity"></i>
-  <p class="w3-medium">Powered by Team Two<a  target="_blank" class="w3-hover-text-green"></a></p>
+
 </footer>
- 
+
 <script>
-// Toggle grid padding
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000);    
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
 function myFunction() {
-    var x = document.getElementById("myGrid");
-    if (x.className === "w3-row") {
-        x.className = "w3-row-padding";
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
     } else { 
-        x.className = x.className.replace("w3-row-padding", "w3-row");
+        x.className = x.className.replace(" w3-show", "");
     }
 }
 
-// Open and close sidebar
-function w3_open() {
-    document.getElementById("mySidebar").style.width = "100%";
-    document.getElementById("mySidebar").style.display = "block";
-}
-
-function w3_close() {
-    document.getElementById("mySidebar").style.display = "none";
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 </script>
 
