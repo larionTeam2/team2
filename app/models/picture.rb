@@ -4,4 +4,5 @@ class Picture < ApplicationRecord
 	validates :name, :description, :image , presence: true
 
 	mount_uploader :image, ImageUploader
+	
 end
