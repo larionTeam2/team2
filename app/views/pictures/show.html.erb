@@ -85,9 +85,12 @@
 <div id="navDemo" class="w3-bar-block w3-light-gray w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
   <% if current_user.present? %>
     <input type="text" placeholder="Search.." class="w3-padding-large w3-hover-red w3-hide-small w3-right ">
+    <%= link_to "Edit", edit_picture_path(@picture), :class => "w3-bar-item w3-button" %>
+              <%= link_to 'Delete', @picture, method: :delete, data: { confirm: 'Are you sure?' } , :class => "w3-bar-item w3-button" %>
    <%= link_to "Upload", new_picture_path, :class => "w3-bar-item w3-button w3-padding-large" %> 
    <%= link_to "My profile", my_profile_index_url, :class => "w3-bar-item w3-button w3-padding-large" %>
    <%= link_to "Sign out", destroy_user_session_path,method: :delete ,:class => "w3-bar-item w3-button w3-padding-large" %>
+
    <% else %>
     <%= link_to "Sign in", new_user_session_path, :class => "w3-bar-item w3-button" %>
     <%= link_to "Sign up", new_user_registration_path, :class => "w3-bar-item w3-button" %>
