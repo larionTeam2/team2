@@ -36,8 +36,66 @@
       color: blue;
   }
 </style>
+<header>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction2()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <%= link_to "Home", home_index_url, :class => "w3-bar-item w3-button w3-padding-large" %>
+    
+    <% if current_user.present?%>
+      
+        <div class="w3-dropdown-hover w3-hide-small">
+          <button class="w3-padding-large w3-button" title="More"><%= @username %> <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <%= link_to "Upload", new_picture_path, :class => "w3-bar-item w3-button" %>
+            <%= link_to "My profile", my_profile_index_url, :class => "w3-bar-item w3-button" %>
+            <%= link_to "Sign out", destroy_user_session_path,method: :delete ,:class => "w3-bar-item w3-button" %>
+          </div>
+        </div>
+      <% else %>
+        <div class="w3-dropdown-hover w3-hide-small">
+          <button class="w3-padding-large w3-button" title="More">Sign in <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <%= link_to "Sign in", new_user_session_path, :class => "w3-bar-item w3-button" %>
+            <%= link_to "Sign up", new_user_registration_path, :class => "w3-bar-item w3-button" %>
+          </div>
+        </div>
+    <% end %>
+    <% if current_user.present? %>
+      <% @user = current_user.id %>
+      <% @picuserid = @picture.user_id %>
+      <% if @user == @picuserid %>
+          <div class="w3-dropdown-hover w3-hide-small">
+            <button class="w3-padding-large w3-button" title="More">Option <i class="fa fa-caret-down"></i></button>     
+            <div class="w3-dropdown-content w3-bar-block w3-card-4">
+              <%= link_to "Edit", edit_picture_path(@picture), :class => "w3-bar-item w3-button" %>
+              <%= link_to 'Delete', @picture, method: :delete, data: { confirm: 'Are you sure?' } , :class => "w3-bar-item w3-button" %>
+            </div>
+          </div>
+        <% else %>
+          
+      <% end %>
+    <% end %>
+    <p class="w3-padding-large w3-hover-red w3-hide-small w3-right ">ViewIt!</p>
+  </div>
+</div>
 
-<body class="w3-light-grey show-picture">
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-light-gray w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <% if current_user.present? %>
+    <input type="text" placeholder="Search.." class="w3-padding-large w3-hover-red w3-hide-small w3-right ">
+   <%= link_to "Upload", new_picture_path, :class => "w3-bar-item w3-button w3-padding-large" %> 
+   <%= link_to "My profile", my_profile_index_url, :class => "w3-bar-item w3-button w3-padding-large" %>
+   <%= link_to "Sign out", destroy_user_session_path,method: :delete ,:class => "w3-bar-item w3-button w3-padding-large" %>
+   <% else %>
+    <%= link_to "Sign in", new_user_session_path, :class => "w3-bar-item w3-button" %>
+    <%= link_to "Sign up", new_user_registration_path, :class => "w3-bar-item w3-button" %>
+  <% end %>
+
+</header>
+
+<body class="w3-light-grey show-picture" style="padding-top: 3em">
   <!-- w3-content defines a container for fixed size centered content, 
 and is wrapped around the whole page content, except for the footer in this example -->
   <div class="w3-content" style="max-width:1600px">
@@ -60,46 +118,37 @@ and is wrapped around the whole page content, except for the footer in this exam
             <%= image_tag @picture.image.fullview.url(@picture), :class => "w3-padding-16 id-pic-des"%>
               <p>
               </p>
-              <p>
-                <%= @picture.description %>
-              </p>
-              <p class="w3-left">
+                
+               <p class="w3-left">
                     <button class="" id="btn-like"><i class="fa fa-thumbs-up"></i> Like</b></button>
               </p>
               <p class="w3-right">
-                <button class="w3-button w3-black" onclick="myFunction('demo1')" id="myBtn">
-                  <b>Replies  </b>
-                  <span class="w3-tag w3-white">1</span>
-                </button>
               </p>
              
               <p class="w3-clear"></p>
               <div class="w3-col l2 m3">
-                    <%= form_with(model: [ @picture, @picture.comments.build ], local: true) do |form| %>                      
-                      <p>
-                          <%= form.label Comment %><br>
-                          <%= form.text_field :body %>
-                      </p>
-                      
-                      <% end %>
+  
                 </div>
               <div class="w3-row w3-margin-bottom" id="demo1" style="display:none;">
                 <hr>
                 <div class="w3-col l2 m3">
-                  <img src="/w3images/avatar_smoke.jpg" style="width:90px;">
+                  
+
+                  <% @user = User.where(:id => @picture.user_id) %>
+                  <% @user.each do|f| %>
+                    <% @profile = Profile.where(:user_id => f.id) %>
+                      <% @profile.each do |n| %>
+                        <%= image_tag n.image.avatar.url %>
+                      <%end%>
+                  <%end%>
+
+
+
                 </div>
-                
+                <%= @picture.description %>
                 
                 <!-- Comment -->
-                <div class="w3-col l10 m9">        
-                    <% @picture.comments.each do |comment| %>
-                                
-                    <h4><%= comment.commenter %>
-                        <span class="w3-opacity w3-medium"><i class="fa fa-globe" aria-hidden="true" style="color: blue"></i> <%= Time.zone.now %></span>
-                    </h4>
-                    <p> <%= comment.body %></p>
-                    <% end %>
-                </div>                
+                               
               </div>
           </div>
         </div>
@@ -143,7 +192,7 @@ and is wrapped around the whole page content, except for the footer in this exam
         <hr>
 
 
-        <!-- Advertising -->
+        <!-- Comment -->
         <div class="w3-white w3-margin">
           <div class="w3-container w3-padding w3-black">
             <h4>Comment</h4>
@@ -199,61 +248,12 @@ and is wrapped around the whole page content, except for the footer in this exam
         <hr>
 
         <!-- Inspiration -->
-        <div class="w3-white w3-margin">
-          <div class="w3-container w3-padding w3-black">
-            <h4>Inspiration</h4>
-          </div>
-          <div class="w3-row-padding w3-white">
-            <div class="w3-col s6">
-              <p>
-                <img src="/w3images/jeans.jpg" alt="Jeans" style="width:100%">
-              </p>
-              <p>
-                <img src="/w3images/team1.jpg" alt="Jeans" style="width:100%">
-              </p>
-            </div>
-            <div class="w3-col s6">
-              <p>
-                <img src="/w3images/avatar_hat.jpg" alt="Men in Hats" style="width:100%" class="w3-grayscale">
-              </p>
-              <p>
-                <img src="/w3images/team4.jpg" alt="Jeans" style="width:100%">
-              </p>
-            </div>
-          </div>
-        </div>
-        <hr>
+        
 
-        <div class="w3-white w3-margin">
-          <div class="w3-container w3-padding w3-black">
-            <h4>Follow Me</h4>
-          </div>
-          <div class="w3-container w3-xlarge w3-padding">
-            <i class="fa fa-facebook-official w3-hover-opacity"></i>
-            <i class="fa fa-instagram w3-hover-opacity"></i>
-            <i class="fa fa-snapchat w3-hover-opacity"></i>
-            <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-            <i class="fa fa-twitter w3-hover-opacity"></i>
-            <i class="fa fa-linkedin w3-hover-opacity"></i>
-          </div>
-        </div>
-        <hr>
+        
 
         <!-- Subscribe -->
-        <div class="w3-white w3-margin">
-          <div class="w3-container w3-padding w3-black">
-            <h4>Subscribe</h4>
-          </div>
-          <div class="w3-container w3-white">
-            <p>Enter your e-mail below and get notified on the latest blog posts.</p>
-            <p>
-              <input class="w3-input w3-border" type="text" placeholder="Enter e-mail" style="width:100%">
-            </p>
-            <p>
-              <button type="button" onclick="document.getElementById('subscribe').style.display='block'" class="w3-button w3-block w3-red">Subscribe</button>
-            </p>
-          </div>
-        </div>
+        
 
         <!-- END About/Intro Menu -->
       </div>
@@ -303,8 +303,40 @@ and is wrapped around the whole page content, except for the footer in this exam
                     }
                 });
             });        
-         
-    </script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000);    
+}
+
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction2() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 </body>
 
 </html>
