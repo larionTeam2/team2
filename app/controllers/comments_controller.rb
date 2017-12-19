@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
 		@picture = Picture.find(params[:picture_id])
 		@comment = @picture.comments.find(params[:id])
 		@comment.destroy
-		redirect_to my_profile_index_url
+		redirect_to picture_path(@picture)
 	end
 	private
 		def comment_params

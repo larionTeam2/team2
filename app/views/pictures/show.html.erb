@@ -211,7 +211,14 @@ and is wrapped around the whole page content, except for the footer in this exam
                 <% @picture.comments.each do |comment| %>
                   <p style="word-wrap: break-word;">
                     <strong><%= comment.commenter  %></strong>
-                    :<%= comment.body %>
+                    : <%= comment.body %>
+                    <% if current_user.present? %>
+                      <% @user = current_user.id %>
+                      <% @picuserid = @picture.user_id %>
+                      <% if @user == @picuserid %>
+                      <%= link_to '', [comment.picture, comment], :class => "fa fa-trash-o" ,method: :delete, data: {confirm: "Are you sure?"} %>
+                      <% end %>
+                    <% end %>
                   </p>
                 <% end %>
               </span>
