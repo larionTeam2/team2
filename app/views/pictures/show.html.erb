@@ -10,9 +10,15 @@
 </head>
 <body>
     <div class="w3-row", style="padding-top: 5em">
-        <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
-                    <%= image_tag @picture.image.fullview.url , width: "100%", height: "auto"  %>
         
+        # <!--button download-->
+        <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
+                    
+        <%= image_tag @picture.image.fullview.url , width: "60%", height: "auto"  %>
+        <% image_url = "#{request.protocol}#{request.host_with_port}#{@picture.image.url}" %></br></br>
+        <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
+        <a href="<%= image_url %>" download="<%= @picture.image_url %>" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-download"></span>&nbsp Download</a>
+        </div>
 
         </div>
         <div class="w3-col m12 l4", style="padding-left: 2em; padding-right: 0.1em">

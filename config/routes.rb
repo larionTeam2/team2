@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   get 'users/password/new'
   root 'home#index'
 
+  resources:my_profiles
+  get 'home/index'
+  root'home#index'
+
 #login ggfb
 
 
