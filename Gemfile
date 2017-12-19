@@ -34,7 +34,15 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 
+<<<<<<< HEAD
 gem 'bootstrap-sass'
+=======
+
+gem 'bootstrap-sass'
+
+
+
+>>>>>>> origin/master
 
 #add bootstrap
 
@@ -44,6 +52,7 @@ gem 'autoprefixer-rails'
 
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
+<<<<<<< HEAD
 
 
 #login gg fb
@@ -54,6 +63,8 @@ gem "omniauth-facebook"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+=======
+>>>>>>> origin/master
 
 
 group :development, :test do
