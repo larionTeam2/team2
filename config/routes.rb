@@ -1,6 +1,4 @@
-Rails.application.routes.draw do
-  resources :searches
-  get 'search/new'
+Rails.application.routes.draw do  
   get 'view_image/index'
 
   get 'my_profile/index'
@@ -10,7 +8,9 @@ Rails.application.routes.draw do
 
   post 'pictures/new'
 
- 
+  #HOME
+  root 'home#index'
+  get '/search', to: 'home#search'
 
   resources :pictures do
     resources :comments
@@ -26,9 +26,9 @@ Rails.application.routes.draw do
   get 'users/password/new'
 
   resources :users
-  get 'home/index'
+  
 
-  root 'home#index'
+  
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,11 @@
+<h3 style="color: grey; margin-top: 123px; margin-left: 10%; ">Search Result..</h3>
+<div class="w3-content" style="max-width:2000px;margin-top:46px; padding-left: 48px">
+    <div class="w3-row" id="myGrid" style="margin-bottom:128px">
+        <% @results.each do |result| %>      
+            <%= link_to result do %>
+            <%= image_tag result.image.thumb.url %>
+            
+        <% end %>              
+    </div>
+    <% end %>
+</div>

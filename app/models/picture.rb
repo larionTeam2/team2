@@ -5,11 +5,4 @@ class Picture < ApplicationRecord
 
 	mount_uploader :image, ImageUploader
 
-	def self.search(term)
-		if term 
-			where('name LIKE ?', "%#{term}#").order(:name)
-		else 
-			order(:name)
-		end 
-	end 
 end

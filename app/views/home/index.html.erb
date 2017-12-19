@@ -23,7 +23,7 @@
         title="Toggle Navigation Menu">
         <i class="fa fa-bars"></i>
       </a>
-      <%= link_to "HOME", home_index_url, :class => "w3-bar-item w3-button w3-padding-large" %>
+      <%= link_to "HOME", root_path, :class => "w3-bar-item w3-button w3-padding-large" %>
         <% if current_user.present? %>
           <div class="w3-dropdown-hover w3-hide-small">
             <button class="w3-padding-large w3-button" title="More">
@@ -47,14 +47,17 @@
               </div>
             </div>
             <% end %>
-          
-              <% form_for @search do |f| %>
-              <p>
-                <%= f.label :keywords%><br>
-                <%= f.text_field :keywords %>
-              </p>
-              <p><%= f.submit "Search" %></p>
-              <% end %>
+            
+            <!--<input type="text" placeholder="Search.." class="w3-padding-large w3-hover-red w3-hide-small w3-right fa fa-search">-->
+              <%= form_tag(search_path, :method => "get",
+                class: 'navbar-form navbar-left') do %>
+                    <div class="input-group input-search">
+                      <%= search_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %>
+                      <div class="input-group-btn search-btn">
+                        <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search', :name => nil %>
+                      </div>
+                    </div>
+                <% end %>
     </div>
   </div>
 
