@@ -112,7 +112,6 @@ and is wrapped around the whole page content, except for the footer in this exam
         <div class="w3-container w3-white w3-margin w3-padding-large">
           <div class="w3-center">
             <h3><%= @picture.name %></h3>
-            <h5><%=  %>
               <span class="w3-opacity"><%= @picture.created_at %></span>
             </h5>
           </div>
@@ -122,11 +121,23 @@ and is wrapped around the whole page content, except for the footer in this exam
               <p>
               </p>
                 
-               <p class="w3-left">
-               <%= @picture.likes.count %>
+               <p class="w3-center">
+
+                <%= @picture.likes.count %> like & <%= @picture.comments.count %>  comment 
                <!--//////////////////////////////////////////-->
+               <!-- show like button -->
                 <%= form_with(model: [ @picture, @picture.likes.build ], local: true) do |form| %>
-                  <button type="submit" id="btn-like"><i class="fa fa-thumbs-up"></i> Like</b></button>
+                  <% if current_user.present? %>
+                    <% @picture.likes.each do |like| %>
+                      <% if current_user.id == like.liker %>
+                        <button type="submit" id="btn-like"><i class="fa fa-heart" aria-hidden="true"></i>Like</b></button>
+                      <% else %>
+                         <button type="submit" id="btn-like"><i class="fa fa-heart-o" aria-hidden="true"></i>Like</b></button>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                 
+                  
                 <% end %>
                     
               </p>
