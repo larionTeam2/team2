@@ -13,9 +13,10 @@
   .mySlides {
     display: none
   }
+
   body,
   h1 {
-      font-family: "Montserrat", sans-serif
+    font-family: "Montserrat", sans-serif
   }
 
   /*img {
@@ -23,7 +24,12 @@
   }*/
 
   .w3-row-padding img {
-      margin-bottom: 12px
+    margin-bottom: 12px
+  }
+  
+  .btnSearch{
+      margin-top: -1px !important;
+      height: 34px !important;
   }
 </style>
 <header>
@@ -64,8 +70,8 @@
                 class: 'navbar-form navbar-left') do %>
                 <div class="input-group">
                   <%= search_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %>
-                    <div class="input-group-btn search-btn">
-                      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search', :name => nil %>
+                    <div class="input-group-btn">
+                      <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search btnSearch', :name => nil %>
                     </div>
                 </div>
                 <% end %>
@@ -105,41 +111,46 @@
           <%= image_tag f.image.thumb.url %>
             <% end %>
         <%end%>-->
-        <div class="w3-content" style="max-width:1500px;">                            
-          <div class="row d4-image-index">
-            <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    <a href="#">
-                        <%= image_tag  "index-img/1.jpg", :class => "card-img-top" %>
-                    </a>
-                    <div class="overlay">
-                        <div class="btnLike">
-                            <a class="fa fa-thumbs-up btn" href="#" role="button"> Like</a>
-                        </div>
-
-                        <div class="btnDownload">
-                            <a class="fa fa-download btn btn-primary" title="Download Here!" href="#" role="button"></a>
-                        </div>
-
-                        <div class="btnComment">
-                            <a class="fa fa-commenting-o btn btn-success" href="#" role="button"> Comment</a>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="#">Project One</a>
-                        </h4>
-                    </div>
-                </div>
+  <div class="w3-content" style="max-width:1500px;">
+    <div class="row d4-image-index">
+      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <% @picture.each do |f| %>
+          <%= link_to f do %>
+            <%= image_tag f.image.thumb.url %>
+              <% end %>
+          <%end%>
+        <!--<div class="card h-100">
+          <a href="#">
+            <%= image_tag  "index-img/1.jpg", :class => "card-img-top" %>
+          </a>
+          <div class="overlay">
+            <div class="btnLike">
+              <a class="fa fa-thumbs-up btn" href="#" role="button"> Like</a>
             </div>
-        </div>
+
+            <div class="btnDownload">
+              <a class="fa fa-download btn btn-primary" title="Download Here!" href="#" role="button"></a>
+            </div>
+
+            <div class="btnComment">
+              <a class="fa fa-commenting-o btn btn-success" href="#" role="button"> Comment</a>
+            </div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#">Project One</a>
+            </h4>
+          </div>
+        </div>-->
+      </div>
     </div>
+  </div>
 
-    
-    <!-- Page content -->
-    
 
-    <!-- End Page Content -->
+  <!-- Page content -->
+
+
+  <!-- End Page Content -->
   </div>
 </body>
 <!-- Footer -->
@@ -160,7 +171,6 @@
   // Automatic Slideshow - change image every 4 seconds
   var myIndex = 0;
   carousel();
-
   function carousel() {
     var i;
     var x = document.getElementsByClassName("mySlides");
@@ -172,7 +182,6 @@
     x[myIndex - 1].style.display = "block";
     setTimeout(carousel, 4000);
   }
-
   // Used to toggle the menu on small screens when clicking on the menu button
   function myFunction() {
     var x = document.getElementById("navDemo");
@@ -182,7 +191,6 @@
       x.className = x.className.replace(" w3-show", "");
     }
   }
-
   // When the user clicks anywhere outside of the modal, close it
   var modal = document.getElementById('ticketModal');
   window.onclick = function (event) {
