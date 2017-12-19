@@ -1,29 +1,6 @@
 
-<!--
-<%= link_to 'Delete', @picture, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', my_profile_index_url %>
-
-
--->
 <!DOCTYPE html>
-<<<<<<< HEAD
-<head>
-    <meta charset="utf-8">
-     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
-</head>
-<body>
-    <div class="w3-row", style="padding-top: 5em">
-        
-        # <!--button download-->
-        <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
-                    
-        <%= image_tag @picture.image.fullview.url , width: "60%", height: "auto"  %>
-        <% image_url = "#{request.protocol}#{request.host_with_port}#{@picture.image.url}" %></br></br>
-        <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
-        <a href="<%= image_url %>" download="<%= @picture.image_url %>" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-download"></span>&nbsp Download</a>
-        </div>
-=======
+
 <html>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -137,12 +114,13 @@ and is wrapped around the whole page content, except for the footer in this exam
 
           <div class="w3-justify">                
             <%= image_tag @picture.image.fullview.url(@picture), :class => "w3-padding-16 id-pic-des"%>
+                <% image_url = "#{request.protocol}#{request.host_with_port}#{@picture.image.url}" %></br></br>
+                <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
+                <a href="<%= image_url %>" download="<%= @picture.image_url %>" class="btn btn-md btn-default"><span class="glyphicon glyphicon-download"></span>&nbsp Download</a> &nbsp &nbsp <button class="" id="btn-like"><i class="fa fa-thumbs-up"></i> Like</b></button>
+                </div>
               <p>
               </p>
                 
-               <p class="w3-left">
-                    <button class="" id="btn-like"><i class="fa fa-thumbs-up"></i> Like</b></button>
-              </p>
               <p class="w3-right">
               </p>
              
