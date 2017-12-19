@@ -123,7 +123,12 @@ and is wrapped around the whole page content, except for the footer in this exam
               </p>
                 
                <p class="w3-left">
-                    <button class="" id="btn-like"><i class="fa fa-thumbs-up"></i> Like</b></button>
+               <%= @picture.likes.count %>
+               <!--//////////////////////////////////////////-->
+                <%= form_with(model: [ @picture, @picture.likes.build ], local: true) do |form| %>
+                  <button type="submit" id="btn-like"><i class="fa fa-thumbs-up"></i> Like</b></button>
+                <% end %>
+                    
               </p>
               <p class="w3-right">
               </p>
