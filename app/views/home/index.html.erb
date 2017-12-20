@@ -27,6 +27,11 @@
     margin-bottom: 12px
   }
   
+  /* form Search */
+  .fieldsearch{
+    width: 366px;
+    margin-left: 300px;
+  }
   .btnSearch{
       margin-top: -1px !important;
       height: 34px !important;
@@ -68,7 +73,7 @@
               <!--<input type="text" placeholder="Search.." class="w3-padding-large w3-hover-red w3-hide-small w3-right fa fa-search">-->
               <%= form_tag(search_path, :method => "get",
                 class: 'navbar-form navbar-left') do %>
-                <div class="input-group">
+                <div class="input-group fieldsearch">
                   <%= search_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %>
                     <div class="input-group-btn">
                       <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search btnSearch', :name => nil %>
