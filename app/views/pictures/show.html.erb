@@ -111,6 +111,12 @@ and is wrapped around the whole page content, except for the footer in this exam
         <!-- Blog entry -->
         <div class="w3-container w3-white w3-margin w3-padding-large">
           <div class="w3-center">
+            <% @current_pic = @picture.user_id %>
+            <% @user =  User.where(:id => @current_pic) %>
+            <% @profile = Profile.where(:user_id => @user) %>
+            <% @profile.each do |p| %>
+              <%= link_to p.name , p %>
+            <% end %>
             <h3><%= @picture.name %></h3>
               <span class="w3-opacity"><%= @picture.created_at %></span>
             </h5>
@@ -128,6 +134,7 @@ and is wrapped around the whole page content, except for the footer in this exam
                <!-- show like button -->
                 <%= form_with(model: [ @picture, @picture.likes.build ], local: true) do |form| %>
                   <% if current_user.present? %>
+                    <% @liker =  %>
         
                         <button type="submit" id="btn-like"><i class="fa fa-heart" aria-hidden="true"></i>Like</b></button>
                       

@@ -18,6 +18,7 @@ class PicturesController < ApplicationController
         @username = f.name
       end 
     end
+
   end
 
   # GET /pictures/new

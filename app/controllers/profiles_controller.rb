@@ -10,6 +10,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @user = User.find(@profile.user_id)
+    @picture = Picture.where(user_id: @user.id)
   end
 
   # GET /profiles/new
