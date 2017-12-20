@@ -54,8 +54,14 @@ h1,h2,h3,h4,h5,h6 {
       <div class="text-center">
         
         <h6>Upload a different photo...</h6>
+       
+          <img id="image" class="avatar img-responsive img-rounded" style="max-height: 50%; max-width: 50%"/></br></br>
+      
+        <%= form.file_field :image, id: :profile_image,class:"text-center center-block well well-sm",type:"file", onchange:"loadFile(event)"%>
         
-        <%= form.file_field :image, id: :profile_image,class:"text-center center-block well well-sm",type:"file"%>
+        
+      
+
       </div>
     </div>
     <!-- edit form column -->
@@ -107,6 +113,24 @@ h1,h2,h3,h4,h5,h6 {
     </div>
   </div>
 </div>
+<script>
+
+var loadFile = function(event) {
+  var output = document.getElementById('image');
+  output.src = URL.createObjectURL(event.target.files[0]);
+
+  $('avatar img-responsive img-rounded')
+  .attr('image', e.target.result)
+  .width(150)
+  .height(200);
+  };
+
+</script>
+
+ 
+
+
+
 <%end%>
 </body>
 </html>
