@@ -128,13 +128,9 @@ and is wrapped around the whole page content, except for the footer in this exam
                <!-- show like button -->
                 <%= form_with(model: [ @picture, @picture.likes.build ], local: true) do |form| %>
                   <% if current_user.present? %>
-                    <% @picture.likes.each do |like| %>
-                      <% if current_user.id == like.liker %>
+        
                         <button type="submit" id="btn-like"><i class="fa fa-heart" aria-hidden="true"></i>Like</b></button>
-                      <% else %>
-                         <button type="submit" id="btn-like"><i class="fa fa-heart-o" aria-hidden="true"></i>Like</b></button>
-                      <% end %>
-                    <% end %>
+                      
                   <% end %>
                  
                   
@@ -226,8 +222,8 @@ and is wrapped around the whole page content, except for the footer in this exam
                     <% if current_user.present? %>
                       <% @user = current_user.id %>
                       <% @picuserid = @picture.user_id %>
-                      <% if @user == @picuserid %>
-                      <%= link_to '', [comment.picture, comment], :class => "fa fa-trash-o" ,method: :delete, data: {confirm: "Are you sure?"} %>
+                      <% if @user == @picuserid || @username == comment.commenter%>
+                        <%= link_to '', [comment.picture, comment], :class => "fa fa-trash-o" ,method: :delete, data: {confirm: "Are you sure?"} %>
                       <% end %>
                     <% end %>
                   </p>
