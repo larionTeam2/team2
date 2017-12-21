@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   get 'home/index'
   root'home#index'
 
+
+  resources:tasks
+  get 'home/index'
+  root 'home#index'
 #login ggfb
 
 

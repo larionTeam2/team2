@@ -47,7 +47,9 @@ h1,h2,h3,h4,h5,h6 {
         <img src="" class="img-thumbnail" >
         <h6>Upload photo...</h6>
         
-        <%= form.file_field :image, id: :profile_image,class:"up_image",type:"file"%>
+        <img id="image" class="avatar img-responsive img-rounded" style="max-height: 70%; max-width: 70%"/></br></br>
+        
+          <%= form.file_field :image, id: :profile_image,class:"text-center center-block well well-sm",type:"file", onchange:"loadFile(event)"%>
         
       </div>
     </div>
@@ -90,6 +92,16 @@ h1,h2,h3,h4,h5,h6 {
   </div>
 </div>
 <script>
+
+var loadFile = function(event) {
+  var output = document.getElementById('image');
+  output.src = URL.createObjectURL(event.target.files[0]);
+
+  $('avatar img-responsive img-rounded')
+  .attr('image', e.target.result)
+  .width(150)
+  .height(200);
+  };
 
 </script>
 <%end%>

@@ -6,7 +6,7 @@ class Picture < ApplicationRecord
 	mount_uploader :image, ImageUploader
 
 	def picture_size
-        if image.size > 2.megabytes
+        if image.size > 10.megabytes
           errors.add(:picture, ".No no too big size! Should be less than 2MB")
         end
       end

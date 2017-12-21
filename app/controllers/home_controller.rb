@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
-  def index
-  	@picture = Picture.all
-  	if current_user.present?
+	def index
+		@picture = Picture.all
+		if current_user.present?
   		@user = current_user.id
   		@profile = Profile.where(:user_id => @user)
   		@profile.each do |f|
