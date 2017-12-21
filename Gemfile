@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#Gem Pagination
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -32,8 +35,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
-
-
 
 gem 'bootstrap-sass'
 

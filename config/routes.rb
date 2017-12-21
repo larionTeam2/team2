@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'view_image/index'
-
+  devise_for :admins
   get 'my_profile/index'
 
   resources :profiles
@@ -15,6 +14,7 @@ Rails.application.routes.draw do
     resources :likes
   end
 
+  get '/search', to: 'home#search'
   
   devise_for :users
   resources :users

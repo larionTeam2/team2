@@ -9,6 +9,15 @@
 <style>
 body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
+/* form Search */
+  .fieldsearch{
+    width: 366px;
+    margin: -15px 0 25px 755px;
+  }
+  .btnSearch{
+      margin-top: -1px !important;
+      height: 34px !important;
+  }
 </style>
 <header>
 
@@ -37,8 +46,6 @@ body {font-family: "Lato", sans-serif}
           </div>
         </div>
     <% end %>
-    
-    <input type="text" placeholder="Search.." class="w3-padding-large w3-hover-red w3-hide-small w3-right ">
   </div>
 </div>
 
@@ -67,7 +74,20 @@ body {font-family: "Lato", sans-serif}
   <h1><b>ViewIt!</b></h1>
   <p><b>View everything in front of you </b></p>
 </header>
+
 </div>
+<div>
+        <%= form_tag(search_path, :method => "get",
+        class: 'navbar-form navbar-left') do %>
+          <div class="input-group fieldsearch">
+            <%= search_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %>
+              <div class="input-group-btn">
+                <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search btnSearch', :name => nil %>
+              </div>
+          </div>
+        <% end %>
+</div>
+
 
 <!-- Photo Grid -->
 <div class="w3-row" id="myGrid" style="margin-bottom:128px; margin-left: 25px;">
@@ -77,11 +97,12 @@ body {font-family: "Lato", sans-serif}
       <%= image_tag f.image.thumb.url %>
     <% end %>
     
-    
-
-  
+      
   <%end%>
-
+    <div class="w3-center">
+          <%= will_paginate @picture, renderer: BootstrapPagination::Rails %>
+    </div>
+</div>
 </body>
 <!-- Footer -->
 
