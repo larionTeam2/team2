@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <style>
 header {font-family: "Times New Roman", Georgia, Serif;}
 h1,h2,h3,h4,h5,h6 {
@@ -45,11 +46,11 @@ h1,h2,h3,h4,h5,h6 {
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
         <img src="" class="img-thumbnail" >
-        <h6>Upload photo...</h6>
         
-        <img id="image" class="avatar img-responsive img-rounded" style="max-height: 70%; max-width: 70%"/></br></br>
         
-          <%= form.file_field :image, id: :profile_image,class:"text-center center-block well well-sm",type:"file", onchange:"loadFile(event)"%>
+        
+          <img id="image" class="avatar img-responsive img-rounded" style="max-height: 350px; max-width: 350px"/></br></br>
+          <%= form.file_field :image, id: :profile_image,class:"text-center center-block well well-sm brw-upload",type:"file", onchange:"loadFile(event)"%>
         
       </div>
     </div>
@@ -101,7 +102,8 @@ var loadFile = function(event) {
   .attr('image', e.target.result)
   .width(150)
   .height(200);
-  };
+  };  
+  
 
 </script>
 <%end%>
