@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :pictures do
     resources :comments
+    resources :tags
   end
 
   
@@ -34,6 +35,8 @@ Rails.application.routes.draw do
   resources:tasks
   get 'home/index'
   root 'home#index'
+
+
 #login ggfb
 
 
