@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   devise_for :admins
+    mount RailsAdmin::Engine => '/admins', as: 'rails_admin'
+
+  
+  resources :admins
   get 'my_profile/index'
 
   resources :profiles

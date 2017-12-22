@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 #Gem Pagination
+
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
@@ -38,7 +39,7 @@ gem 'mini_magick'
 
 gem 'bootstrap-sass'
 
-
+gem 'rails_admin'
 
 
 #add bootstrap
