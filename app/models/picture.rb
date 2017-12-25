@@ -13,17 +13,13 @@ class Picture < ApplicationRecord
 			end
 	after_create do
 		picture=Picture.find_by(id: self.id)
-		hashtags = self.tag.scan(/#\w+/)
-		hashtags.uniq.map do |hashtag|
-				tag = Tag.find_or_create_by(name: hashtags.downcase.delete('#'))
-				picture.tags << tag
 		end
-	end
+	
 
 	before_update do
 		picture =Picture.find_by(id: self.id)
 		picture.tags.clear
-		hashtags = self.tag.scan(/#\w+/)
+		
 		hashtags.uniq.map do |hashtag|
 			tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
 			picture.tags << tag

@@ -117,6 +117,7 @@ and is wrapped around the whole page content, except for the footer in this exam
                 <% image_url = "#{request.protocol}#{request.host_with_port}#{@picture.image.url}" %></br></br>
                 <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
                 <a href="<%= image_url %>" download="<%= @picture.image_url %>" class="btn btn-md btn-default"><span class="glyphicon glyphicon-download"></span>&nbsp Download</a> &nbsp &nbsp <button class="" id="btn-like"><i class="fa fa-thumbs-up"></i> Like</b></button>
+                
                 </div>
               
               <p>
@@ -340,7 +341,7 @@ window.onclick = function(event) {
 
 
 </script>
-<!-- Go to www.addthis.com/dashboard to customize your tools -->
+
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a3cb6a073342f6a"></script>
 
 </body>

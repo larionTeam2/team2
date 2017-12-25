@@ -32,7 +32,7 @@ end
 private
 
   def avatar_size_validation
-    errors[:avatar] << "should be less than 5MB" if avatar.size > 3.megabytes
+    errors[:avatar] << "should be less than 3MB" if avatar.size > 3.megabytes
   end
 
 end
