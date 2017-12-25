@@ -30,7 +30,12 @@ body {font-family: "Lato", sans-serif}
     <% if current_user.present?%>
       
         <div class="w3-dropdown-hover w3-hide-small">
-          <button class="w3-padding-large w3-button" title="More"><%= @username %> <i class="fa fa-caret-down"></i></button>     
+          <% if @profile.present? %>
+            <button class="w3-padding-large w3-button" title="More"><%= @username %> <i class="fa fa-caret-down"></i></button>
+          <% else %>
+            <button class="w3-padding-large w3-button" title="More"><%= current_user.email %> <i class="fa fa-caret-down"></i></button>
+          <% end %>
+               
           <div class="w3-dropdown-content w3-bar-block w3-card-4">
             <%= link_to "Upload", new_picture_path, :class => "w3-bar-item w3-button" %>
             <%= link_to "My profile", my_profile_index_url, :class => "w3-bar-item w3-button" %>
