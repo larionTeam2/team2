@@ -9,6 +9,10 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+    
+    @pic = Picture.find(params[:id])
+
+
     if current_user.present?
       @user = current_user.id
       @profile = Profile.where(:user_id => @user)

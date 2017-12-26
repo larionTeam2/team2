@@ -30,7 +30,11 @@ body {font-family: "Lato", sans-serif}
     <% if current_user.present?%>
       
         <div class="w3-dropdown-hover w3-hide-small">
-          <button class="w3-padding-large w3-button" title="More"><%= @username %> <i class="fa fa-caret-down"></i></button>     
+           <% if @profile.present? %>
+            <button class="w3-padding-large w3-button" title="More"><%= @username %> <i class="fa fa-caret-down"></i></button>
+          <% else %>
+            <button class="w3-padding-large w3-button" title="More"><%= current_user.email %> <i class="fa fa-caret-down"></i></button>
+          <% end %>     
           <div class="w3-dropdown-content w3-bar-block w3-card-4">
             <%= link_to "Upload", new_picture_path, :class => "w3-bar-item w3-button" %>
             <%= link_to "My profile", my_profile_index_url, :class => "w3-bar-item w3-button" %>
@@ -60,6 +64,18 @@ body {font-family: "Lato", sans-serif}
     <%= link_to "Sign in", new_user_session_path, :class => "w3-bar-item w3-button" %>
     <%= link_to "Sign up", new_user_registration_path, :class => "w3-bar-item w3-button" %>
   <% end %>
+  <div>
+        <%= form_tag(search_path, :method => "get",
+        class: 'navbar-form navbar-left') do %>
+          <div class="input-group" style=" width: 366px;
+    margin: center; margin-left: 10%">
+            <%= search_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %>
+              <div class="input-group-btn">
+                <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search btnSearch', :name => nil %>
+              </div>
+          </div>
+        <% end %>
+    </div>
 
 <!-- Page content -->
 <body>

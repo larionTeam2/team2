@@ -4,6 +4,7 @@ class Picture < ApplicationRecord
 	has_many :likes, dependent: :destroy
 	validates :name, :description, :image , presence: true
 	validate :picture_size
+	
 	mount_uploader :image, ImageUploader
 
 	def picture_size

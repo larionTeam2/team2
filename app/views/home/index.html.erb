@@ -65,6 +65,18 @@ body {font-family: "Lato", sans-serif}
     <%= link_to "Sign in", new_user_session_path, :class => "w3-bar-item w3-button" %>
     <%= link_to "Sign up", new_user_registration_path, :class => "w3-bar-item w3-button" %>
   <% end %>
+  <div>
+        <%= form_tag(search_path, :method => "get",
+        class: 'navbar-form navbar-left') do %>
+          <div class="input-group" style=" width: 366px;
+    margin: center; margin-left: 10%">
+            <%= search_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %>
+              <div class="input-group-btn">
+                <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search btnSearch', :name => nil %>
+              </div>
+          </div>
+        <% end %>
+    </div>
 
 <!-- Page content -->
 <body>
