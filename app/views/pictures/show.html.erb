@@ -1,12 +1,5 @@
-
-<!--
-<%= link_to 'Delete', @picture, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', my_profile_index_url %>
-
-
--->
 <!DOCTYPE html>
+
 <html>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -15,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
   h1,
   h2,
@@ -24,11 +18,9 @@
   h6 {
     font-family: "Oswald";
   }
-
   .show-picture {
     font-family: "Open Sans";
   }
-
   .id-pic-des {
     width: 100%;
   }
@@ -99,7 +91,10 @@
 </header>
 
 <body class="w3-light-grey show-picture" style="padding-top: 3em">
-  <!-- w3-content defines a container for fixed size centered content, 
+  
+
+  
+<!-- w3-content defines a container for fixed size centered content, 
 and is wrapped around the whole page content, except for the footer in this example -->
   <div class="w3-content" style="max-width:1600px">
     <!-- Grid -->
@@ -124,9 +119,14 @@ and is wrapped around the whole page content, except for the footer in this exam
 
           <div class="w3-justify">                
             <%= image_tag @picture.image.fullview.url(@picture), :class => "w3-padding-16 id-pic-des"%>
+                <% image_url = "#{request.protocol}#{request.host_with_port}#{@picture.image.url}" %></br></br>
+                <div class="w3-col m12 l8", style="padding-left: 0.1em; padding-right: 0.1em">  
+                
+                
+                </div>
+              
               <p>
               </p>
-                
                <p class="w3-center">
 
                 <%= @picture.likes.count %> like & <%= @picture.comments.count %>  comment 
@@ -144,7 +144,8 @@ and is wrapped around the whole page content, except for the footer in this exam
                 <% end %>
                     
               </p>
-              <p class="w3-right">
+                <p class="w3-right">
+                <a href="<%= image_url %>" download="<%= @picture.image_url %>" class="btn btn-md btn-default"><span class="glyphicon glyphicon-download"></span>&nbsp Download</a>&nbsp &nbsp 
               </p>
              
               <p class="w3-clear"></p>
@@ -355,7 +356,6 @@ and is wrapped around the whole page content, except for the footer in this exam
 // Automatic Slideshow - change image every 4 seconds
 var myIndex = 0;
 carousel();
-
 function carousel() {
     var i;
     var x = document.getElementsByClassName("mySlides");
@@ -367,7 +367,6 @@ function carousel() {
     x[myIndex-1].style.display = "block";  
     setTimeout(carousel, 4000);    
 }
-
 // Used to toggle the menu on small screens when clicking on the menu button
 function myFunction2() {
     var x = document.getElementById("navDemo");
@@ -377,7 +376,6 @@ function myFunction2() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-
 // When the user clicks anywhere outside of the modal, close it
 var modal = document.getElementById('ticketModal');
 window.onclick = function(event) {
@@ -385,7 +383,12 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+
 </script>
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a3cb6a073342f6a"></script>
+
 </body>
 
 </html>

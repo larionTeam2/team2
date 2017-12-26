@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
   	@picture = Picture.paginate(:page => params[:page], per_page: 8)  
-  	if current_user.present?
+		if current_user.present?
   		@user = current_user.id
   		@profile = Profile.where(:user_id => @user)
   		@profile.each do |f|

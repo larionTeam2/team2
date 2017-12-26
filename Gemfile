@@ -39,7 +39,10 @@ gem 'mini_magick'
 
 gem 'bootstrap-sass'
 
+
 gem 'rails_admin'
+
+
 
 
 #add bootstrap
@@ -50,6 +53,20 @@ gem 'autoprefixer-rails'
 
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
+
+
+
+#login gg fb
+
+
+gem "omniauth-google-oauth2", "~> 0.2.1"
+gem "omniauth-facebook"
+
+
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
