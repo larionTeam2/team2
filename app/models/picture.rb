@@ -12,19 +12,6 @@ class Picture < ApplicationRecord
           errors.add(:picture, ".No no too big size! Should be less than 2MB")
         end
 			end
-	after_create do
-		picture=Picture.find_by(id: self.id)
-		end
 	
-
-	before_update do
-		picture =Picture.find_by(id: self.id)
-		picture.tags.clear
-		
-		hashtags.uniq.map do |hashtag|
-			tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
-			picture.tags << tag
-		end
-	end
 	
 end

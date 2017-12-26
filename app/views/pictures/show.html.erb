@@ -150,7 +150,7 @@ and is wrapped around the whole page content, except for the footer in this exam
                <!-- show like button -->
                <div>
                 <p class="w3-right">
-                <a href="<%= image_url %>" download="<%= @picture.image_url %>" class="btn btn-md btn-default"><span class="glyphicon glyphicon-download"></span>&nbsp Download</a>&nbsp &nbsp 
+                  <a href="<%= image_url %>" download="<%= @picture.image_url %>" class="btn btn-md btn-default" ><span class="glyphicon glyphicon-download" ></span>&nbsp Download</a>&nbsp &nbsp 
               </p>
                 <% if current_user.present? %>
         
@@ -158,13 +158,12 @@ and is wrapped around the whole page content, except for the footer in this exam
                     <% @like = Like.where(:liker => current_user.id) %>
                     <% if @like.present? && @l.present? %>
                       <% @picture.likes.each do |like| %>
-                        <button><i class="fa fa-heart" aria-hidden="true"></i> <%= link_to 'Unlike', [like.picture, like],
-               method: :delete  %> </button>
-
+                        <%= link_to " Unlike", [like.picture, like],method: :delete, :class => "w3-button w3-teal w3-border w3-border-aqua w3-round-xxlarge fa fa-heart " %>
+                        
                       <% end %>
                     <% else %>
                       <%= form_with(model: [ @picture, @picture.likes.build ], local: true) do |form| %>
-                        <button type="submit" id="btn-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Like</b></button>
+                        <button class= "w3-button w3-teal w3-border w3-border-aqua w3-round-xxlarge" type="submit" id="btn-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Like</b></button>
                       <% end %>
                     <%end%>
                 <% end %>
@@ -272,7 +271,7 @@ and is wrapped around the whole page content, except for the footer in this exam
                 <p>
                     <%= form.label Comment %><br>
                     <% if current_user.present? %>
-                      <%= form.text_field :body, :style => "width: 400px" %>
+                      <%= form.text_field :body, :class => "w3-border-top w3-border-light-grey" ,:style => "width: 100%; word-wrap: break-word" %>
                       <% else %>
                         <p style="padding: 40px"><strong><%= link_to "Sign in", new_user_session_path %></strong> to comment</p>
                     <% end %>
