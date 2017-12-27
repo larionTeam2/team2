@@ -157,10 +157,15 @@ and is wrapped around the whole page content, except for the footer in this exam
                     <% @l = Like.where(:picture_id => @picture.id) %>    
                     <% @like = Like.where(:liker => current_user.id) %>
                     <% if @like.present? && @l.present? %>
+                      <% @like.each do |l| %>
+                        <%= link_to "Unlike", [l.picture, l], method: :delete, :class => "w3-button w3-teal w3-border w3-border-aqua w3-round-xxlarge fa fa-heart " %>
+                      <%end%>
+                      <!-- ham sai 
                       <% @picture.likes.each do |like| %>
-                        <%= link_to " Unlike", [like.picture, like],method: :delete, :class => "w3-button w3-teal w3-border w3-border-aqua w3-round-xxlarge fa fa-heart " %>
-                        
+                        <% link_to " Unlike", [like.picture, like],method: :delete, :class => "w3-button w3-teal w3-border w3-border-aqua w3-round-xxlarge fa fa-heart " %>
+                      
                       <% end %>
+                      -->
                     <% else %>
                       <%= form_with(model: [ @picture, @picture.likes.build ], local: true) do |form| %>
                         <button class= "w3-button w3-teal w3-border w3-border-aqua w3-round-xxlarge" type="submit" id="btn-like"><i class="fa fa-heart-o" aria-hidden="true"></i> Like</b></button>
