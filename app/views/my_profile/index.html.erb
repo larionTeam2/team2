@@ -104,13 +104,20 @@ a:hover, .w3-info:hover{
     <!-- First Photo Grid-->
   
     <div class="w3-col m1 l12 w3-row w3-margin" style="margin-bottom: 10em">
-      <% @picture.each do |picture| %>
-        
-          <%= link_to image_tag(picture.image.thumb.url), picture %>
-      
+      <% if @picture.present? %>
+        <% @picture.each do |picture| %>
+            <%= link_to image_tag(picture.image.thumb.url), picture %>
+        <% end %>
+        <% else %>
+           <div class="w3-col m1 l12 w3-row w3-margin" style="margin-bottom: 10em; height: 300px">
+              <p class="w3-center"><%= link_to "Ready to share your picture", new_profile_path, :class => "w3-center", :style => "font-size: 22px" %></p>
+              
+           </div>
       <% end %>
     </div>
+  
 
+  <% if @myprofile.present? %>  
     
   <% @myprofile.each do |f| %>
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
@@ -143,6 +150,37 @@ a:hover, .w3-info:hover{
     
   </div>
   <%end%>
+    <% else %>
+        <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+    <h4><b>About Me</b></h4>
+    <p>
+      <%= link_to "Please tell me about you", new_profile_path %>
+    </p>
+    <hr>
+    
+  </div>
+
+  <!-- Contact Section -->
+  
+  <div class="w3-container w3-padding-large w3-grey">
+    <h4 id="contact"><b>Contact Me</b></h4>
+    <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
+      <div class="w3-third w3-dark-grey">
+        <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
+        <p>Example@gmail.com</p>
+      </div>
+      <div class="w3-third w3-teal">
+        <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
+        <p>Example Address</p>
+      </div>
+      <div class="w3-third w3-dark-grey">
+        <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
+        <p>Phone Number</p>
+      </div>
+    </div>
+    
+  </div>
+  <% end %>
 
 
   <div class="w3-black w3-center w3-padding-24">Powered by Team Two<a href="https://www.w3schools.com/w3css/default.asp" title="" target="_blank" class="w3-hover-opacity"></a></div>
