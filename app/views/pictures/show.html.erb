@@ -150,7 +150,7 @@ and is wrapped around the whole page content, except for the footer in this exam
                <!-- show like button -->
                <div>
                 <p class="w3-right">
-                  <a href="<%= image_url %>" download="<%= @picture.image_url %>" class="btn btn-md btn-default" ><span class="glyphicon glyphicon-download" ></span>&nbsp Download</a>&nbsp &nbsp 
+                  <a href="<%= image_url %>" download="<%= @picture.image_url %>" class="btn btn-md btn-info" ><span class="glyphicon glyphicon-download" ></span>&nbsp Download</a>&nbsp &nbsp 
               </p>
                 <% if current_user.present? %>
         
@@ -158,7 +158,7 @@ and is wrapped around the whole page content, except for the footer in this exam
                     <% @like = Like.where(:liker => current_user.id) %>
                     <% if @like.present? && @l.present? %>
                       <% @like.each do |l| %>
-                        <%= link_to "Unlike", [l.picture, l], method: :delete, :class => "w3-button w3-teal w3-border w3-border-aqua w3-round-xxlarge fa fa-heart " %>
+                        <%= link_to " Unlike", [l.picture, l], method: :delete, :class => "w3-button w3-pink w3-border w3-border-aqua w3-round-xxlarge fa fa-heart ", :style => "text-decoration: none" %>
                       <%end%>
                       <!-- ham sai 
                       <% @picture.likes.each do |like| %>
