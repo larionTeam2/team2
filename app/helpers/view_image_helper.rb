@@ -1,0 +1,2 @@
+module ViewImageHelper
+end

@@ -1,0 +1,86 @@
+/* Footer Page */
+.footer-bottom {        
+    background-color: #15224f;
+    height: auto;
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 10px;
+    max-height: 95px;
+    .logo-icon-footer {       
+        float: left; 
+        color: white;
+        text-align: center;
+        
+        font-size: 16px;
+        .a-icon {
+            margin-top: 10px;
+            font-size: 20px;
+            padding: 3px;
+            width: 30px;
+            text-align: center;
+            text-decoration: none; //margin: 5px 2px;
+            border-radius: 15%;
+        }
+        .a-icon:hover {
+            opacity: 0.7;
+        }
+
+        .a-icon-footer {        
+            a {
+                text-decoration: none;
+                color: whitesmoke;
+            }
+            .fb-icon {
+                background-color: #3B5998; //color: white;
+            }
+            .instagram-icon {
+                background-color: #125688;
+                color: white;
+            }
+            .snapchat-icon {
+                background-color: #fffc00;
+                color: white;
+                text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            }
+            .pinter-icon {
+                background-color: #cb2027;
+                color: white;
+            }
+            .twittter-icon {
+                background-color: #55ACEE;
+                color: white;
+            }
+            .linkedin-icon {
+                background-color: #007bb5;
+                color: white;
+            }
+        }
+    }
+   
+    .copy-footer {
+        color: #fff;
+        line-height: 30px;
+        min-height: 30px;
+        padding: 7px 0;
+        margin-left: 15%;
+        float: left;
+    }
+    
+    .footer-design {
+        color: #fff;
+        line-height: 30px;
+        min-height: 30px;        
+        text-align: right;
+        margin-right: 15%;
+    }
+    
+    
+    .footer-design a {
+        color: #fff;
+    }    
+}
+
