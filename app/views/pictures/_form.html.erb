@@ -1,3 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+<header>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+header {font-family: "Times New Roman", Georgia, Serif;}
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Playfair Display";
+    
+}
+</style>
+<div class="w3-top">
+<div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+ 
+  <%= link_to "ViewIt!", root_path %>
+  <!-- Right-sided navbar links. Hide them on small screens -->
+  
+  </div>
+</div>
+</header></br></br></br></br></br>
+
+
 <%= form_with(model: picture, local: true) do |form| %>
   <% if picture.errors.any? %>
     <div id="error_explanation">
@@ -10,23 +38,75 @@
       </ul>
     </div>
   <% end %>
+  
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Upload Image</h1>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="" class="img-thumbnail" >
+        
+        
+        
+          <img id="image" class="avatar img-responsive img-rounded" style="max-height: 350px; max-width: 350px"/></br></br>
+          <%= form.file_field :image, id: :profile_image,class:"text-center center-block well well-sm brw-upload",type:"file", onchange:"loadFile(event)"%>
+        
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      
+      <h3>...</h3>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Name :</label>
+          <div class="col-lg-8">
+            
+          <%= form.text_field :name, id: :picture_name ,class:"form-control" ,type:"text"%></br>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Description :</label>
+          <div class="col-lg-8">
+          <%= form.text_field :description, id: :picture_description, class:"form-control",type:"text" %></br>
+          </div>
+        </div>
+           
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+          <input type="submit" class="btn-first", value="Upload"> &nbsp &nbsp &nbsp
+          <span></span>
+          <%= current_user.email%> <span> ...</span> &nbsp &nbsp
+          <span></span>
+         
+         
+          
+         
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :picture_name %>
+            <span></span>
+            
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
+</div>
+<script>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, id: :picture_description %>
-  </div>
+var loadFile = function(event) {
+  var output = document.getElementById('image');
+  output.src = URL.createObjectURL(event.target.files[0]);
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image, id: :picture_image %>
-  </div>
+  $('avatar img-responsive img-rounded')
+  .attr('image', e.target.result)
+  .width(150)
+  .height(200);
+  };  
+  
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</script>
+<%end%>
+</body>
+</html>

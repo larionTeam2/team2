@@ -11,6 +11,18 @@ class PicturesController < ApplicationController
   # GET /pictures/1
   # GET /pictures/1.json
   def show
+    
+    @pic = Picture.find(params[:id])
+
+
+    if current_user.present?
+      @user = current_user.id
+      @profile = Profile.where(:user_id => @user)
+      @profile.each do |f|
+        @username = f.name
+      end 
+    end
+
   end
 
   # GET /pictures/new
@@ -27,8 +39,7 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(picture_params) do |picture|
       picture.user_id = current_user.id
-    end
-    #@picture.user_id = current_user.id
+    end    
 
     respond_to do |format|
       if @picture.save
@@ -60,7 +71,7 @@ class PicturesController < ApplicationController
   def destroy
     @picture.destroy
     respond_to do |format|
-      format.html { redirect_to my_profile_index_path, notice: 'Picture was successfully destroyed.' }
+      format.html { redirect_to home_index_url, notice: 'Picture was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

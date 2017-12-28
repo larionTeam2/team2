@@ -37,6 +37,10 @@ class ImageUploader < CarrierWave::Uploader::Base
    version :fullview do
       process resize_to_fit: [1080, 1080]
       process :quality => 100
+   end
+
+   version :fullview do
+      process resize_to_fit: [768, 768]
     end
 
    version :avatar do

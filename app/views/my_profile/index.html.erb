@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+a:hover, .w3-info:hover{          
+  color: #00796B;
+  font-weight: 600;
+  text-decoration: none;
+}
 </style>
 <body class="w3-light-grey w3-content" style="max-width:1600px">
 
@@ -18,40 +23,53 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
       <i class="fa fa-remove"></i>
     </a>
     
-    <div class="w3-round" style="width: 45%">
+    <div class="w3-round" style="width: 50%; margin-left: 30%;">
       <!-- avatar here -->
       <% @myprofile.each do |profile| %>
-        <%= image_tag profile.image.avatar.url %>
+        <%= image_tag profile.image.avatar.url, :style => "border-radius:50%;" %>
       <% end %>
     </div>
     <h4><b> 
      
     <!-- User name here -->
-        <% @myprofile.each do |profile| %>
-        <%= profile.name %>
+    <div style="text-align: center;">
+      <% @myprofile.each do |profile| %>
+        <%= profile.name  %>
     <% end %>
+    </div>
+        
 
     </b></h4>
-    <p class="w3-text-grey"> <%=current_user.email%> </p>
+    <p class="w3-text-grey" style="margin-left: 15%"><%=current_user.email%> </p>
   </div>
-  <div class="w3-bar-block">
-    <a href="home" onclick="w3_close()" class="w3-bar-item w3-button w3-padding w3-text-teal"><i class="fa fa-th-large fa-fw w3-margin-right"></i>ViewIt!</a> 
-    <a href="/about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right"></i>ABOUT</a> 
 
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right"></i>CONTACT</a>
+  <div class="w3-bar-block w3-info" style="margin-left:15%;">     
+  
 
-    <% if @myprofile.present? %>
-      <%= link_to "EDIT MY PROFILE" , edit_profile_path(@user), :class => "w3-bar-item w3-button w3-padding" %>
+    <div class="w3-bar-item w3-button w3-padding w3-text-teal">
+    <i class="fa fa-th-large fa-fw w3-margin-right"></i>&nbsp<%= link_to "HOME", root_path %>
+    </div>
+
+    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right w3-text-teal"></i>ABOUT</a> 
+
+  
+
+    
+
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-envelope fa-fw w3-margin-right w3-text-teal"></i>CONTACT</a>
+
+    <% if @myprofile.present? %>      
+      <a href="<%=edit_profile_path(@user) %>" onclick="w3_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-pencil-square-o w3-text-teal"></i> Edit My Profile</a>
       <%else%>
         <%= link_to "ADD INFO", new_profile_path, :class => "w3-bar-item w3-button w3-padding" %>
     <%end%>
     
-    <%= link_to "SIGN OUT" , destroy_user_session_path , method: :delete, :class => "w3-bar-item w3-button w3-padding"%>
+    <%= link_to " Sign Out" , destroy_user_session_path , method: :delete, :class => "w3-bar-item w3-button w3-padding w3-text-teal fa fa-sign-out"%>
     
 
     
   </div>
-  <div class="w3-panel w3-large">
+  <div class="w3-panel w3-large" style="margin-left: 15%">
     <i class="fa fa-facebook-official w3-hover-opacity"></i>
     <i class="fa fa-instagram w3-hover-opacity"></i>
     <i class="fa fa-snapchat w3-hover-opacity"></i>
@@ -85,22 +103,21 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
     <!-- First Photo Grid-->
   
-    <div class="w3-row-padding">
-      <% @picture.each do |picture| %>
-        <div class="w3-third w3-container w3-margin-bottom" onclick="document.getElementById('id01').style.display='block'">
-          <!-- noi nay de show hinh -->
+    <div class="w3-col m1 l12 w3-row w3-margin" style="margin-bottom: 10em">
+      <% if @picture.present? %>
+        <% @picture.each do |picture| %>
             <%= link_to image_tag(picture.image.thumb.url), picture %>
-            <% image_tag picture.image.thumb.url %>
-        
-          <div class="w3-container w3-white">
-            <p><b><%=picture.name%></b></p>
-            <p><%= picture.description %></p>
-          </div>
-
-        </div>
+        <% end %>
+        <% else %>
+           <div class="w3-col m1 l12 w3-row w3-margin" style="margin-bottom: 10em; height: 300px">
+              <p class="w3-center"><%= link_to "Ready to share your picture", new_profile_path, :class => "w3-center", :style => "font-size: 22px" %></p>
+              
+           </div>
       <% end %>
     </div>
+  
 
+  <% if @myprofile.present? %>  
     
   <% @myprofile.each do |f| %>
   <div class="w3-container w3-padding-large" style="margin-bottom:32px">
@@ -133,42 +150,49 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     
   </div>
   <%end%>
+    <% else %>
+        <div class="w3-container w3-padding-large" style="margin-bottom:32px">
+    <h4><b>About Me</b></h4>
+    <p>
+      <%= link_to "Please tell me about you", new_profile_path %>
+    </p>
+    <hr>
+    
+  </div>
+
+  <!-- Contact Section -->
+  
+  <div class="w3-container w3-padding-large w3-grey">
+    <h4 id="contact"><b>Contact Me</b></h4>
+    <div class="w3-row-padding w3-center w3-padding-24" style="margin:0 -16px">
+      <div class="w3-third w3-dark-grey">
+        <p><i class="fa fa-envelope w3-xxlarge w3-text-light-grey"></i></p>
+        <p>Example@gmail.com</p>
+      </div>
+      <div class="w3-third w3-teal">
+        <p><i class="fa fa-map-marker w3-xxlarge w3-text-light-grey"></i></p>
+        <p>Example Address</p>
+      </div>
+      <div class="w3-third w3-dark-grey">
+        <p><i class="fa fa-phone w3-xxlarge w3-text-light-grey"></i></p>
+        <p>Phone Number</p>
+      </div>
+    </div>
+    
+  </div>
+  <% end %>
 
 
   <div class="w3-black w3-center w3-padding-24">Powered by Team Two<a href="https://www.w3schools.com/w3css/default.asp" title="" target="_blank" class="w3-hover-opacity"></a></div>
 
 </div>
 
-  
-      <!--
-      <button class="w3-button w3-white"><i class="fa fa-diamond w3-margin-right"></i>Design</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
-      <button class="w3-button w3-white w3-hide-small"><i class="fa fa-map-pin w3-margin-right"></i>Art</button>
-      -->
-  
-    
 
-  
   
   
   
   </div>
 
-  <!-- Pagination -->
-  <!--
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
-      <a href="#" class="w3-bar-item w3-black w3-button">1</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
-    </div>
-  </div>
-  -->
-
-  
 
   
   

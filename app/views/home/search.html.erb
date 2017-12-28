@@ -1,10 +1,154 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+/* form Search */
+  .fieldsearch{
+    width: 366px;
+    margin: -15px 0 25px 755px;
+  }
+  .btnSearch{
+      margin-top: -1px !important;
+      height: 34px !important;
+  }
+</style>
+<header>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <%= link_to "Home", home_index_url, :class => "w3-bar-item w3-button w3-padding-large" %>
+    
+    <% if current_user.present?%>
+      
+        <div class="w3-dropdown-hover w3-hide-small">
+           <% if @profile.present? %>
+            <button class="w3-padding-large w3-button" title="More"><%= @username %> <i class="fa fa-caret-down"></i></button>
+          <% else %>
+            <button class="w3-padding-large w3-button" title="More"><%= current_user.email %> <i class="fa fa-caret-down"></i></button>
+          <% end %>     
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <%= link_to "Upload", new_picture_path, :class => "w3-bar-item w3-button" %>
+            <%= link_to "My profile", my_profile_index_url, :class => "w3-bar-item w3-button" %>
+            <%= link_to "Sign out", destroy_user_session_path,method: :delete ,:class => "w3-bar-item w3-button" %>
+          </div>
+        </div>
+      <% else %>
+        <div class="w3-dropdown-hover w3-hide-small">
+          <button class="w3-padding-large w3-button" title="More">Sign in <i class="fa fa-caret-down"></i></button>     
+          <div class="w3-dropdown-content w3-bar-block w3-card-4">
+            <%= link_to "Sign in", new_user_session_path, :class => "w3-bar-item w3-button" %>
+            <%= link_to "Sign up", new_user_registration_path, :class => "w3-bar-item w3-button" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- Navbar on small screens -->
+<div id="navDemo" class="w3-bar-block w3-light-gray w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+  <% if current_user.present? %>
+    <input type="text" placeholder="Search.." class="w3-padding-large w3-hover-red w3-hide-small w3-right ">
+   <%= link_to "Upload", new_picture_path, :class => "w3-bar-item w3-button w3-padding-large" %> 
+   <%= link_to "My profile", my_profile_index_url, :class => "w3-bar-item w3-button w3-padding-large" %>
+   <%= link_to "Sign out", destroy_user_session_path,method: :delete ,:class => "w3-bar-item w3-button w3-padding-large" %>
+   <% else %>
+    <%= link_to "Sign in", new_user_session_path, :class => "w3-bar-item w3-button" %>
+    <%= link_to "Sign up", new_user_registration_path, :class => "w3-bar-item w3-button" %>
+  <% end %>
+  <div>
+        <%= form_tag(search_path, :method => "get",
+        class: 'navbar-form navbar-left') do %>
+          <div class="input-group" style=" width: 366px;
+    margin: center; margin-left: 10%">
+            <%= search_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %>
+              <div class="input-group-btn">
+                <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search btnSearch', :name => nil %>
+              </div>
+          </div>
+        <% end %>
+    </div>
+
+<!-- Page content -->
+<body>
+<div class="w3-content" style="max-width:1500px">
+</header>
+
+<!-- Header -->
+<div class="w3-opacity" style="padding-top: 5em">
+
+<div class="w3-clear"></div>
+<header class="w3-center w3-margin-bottom">
+  <h1><b>ViewIt!</b></h1>
+  <p><b>View everything in front of you </b></p>
+</header>
+
+</div>
+
+<!-- Photo Grid -->
+
+
+
 <h3 style="color: grey; margin-top: 123px; margin-left: 10%; ">Search Result..</h3>
 <div class="w3-content" style="max-width:2000px;margin-top:46px; padding-left: 48px">
-    <div class="w3-row" id="myGrid" style="margin-bottom:128px">
-        <% @results.each do |result| %>      
+
+  <div class="w3-row" id="myGrid" style="margin-bottom:128px; margin-left: 25px;">
+      <% @results.each do |result| %>      
             <%= link_to result do %>
-            <%= image_tag result.image.thumb.url %>            
-        <% end %>              
-    </div>
-    <% end %>
+              <%= image_tag result.image.thumb.url %> 
+            <% end %>           
+        <% end %>
+      <div>
+          
+      </div>
+  </div>
+
 </div>
+</body>
+<!-- Footer -->
+
+</footer>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000);    
+}
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+    var x = document.getElementById("navDemo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>

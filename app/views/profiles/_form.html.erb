@@ -2,6 +2,26 @@
 <html>
 <body>
 <header>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+header {font-family: "Times New Roman", Georgia, Serif;}
+h1,h2,h3,h4,h5,h6 {
+    font-family: "Playfair Display";
+    
+}
+</style>
+<div class="w3-top">
+<div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+ 
+  <%= link_to "ViewIt!", root_path %>
+  <!-- Right-sided navbar links. Hide them on small screens -->
+  
+  </div>
+</div>
+</header></br></br></br></br></br><header>
 
 	<span>
 	
@@ -32,19 +52,17 @@
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
       <div class="text-center">
-        <img src="#" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6>Upload a different photo...</h6>
         
-        <%= form.file_field :image, id: :profile_image,class:"text-center center-block well well-sm",type:"file"%>
+        <h6>Upload a different photo...</h6>
+       
+          <img id="image" class="avatar img-responsive img-rounded" style="max-height: 50%; max-width: 50%"/></br></br>
+      
+        <%= form.file_field :image, id: :profile_image,class:"text-center center-block well well-sm",type:"file", onchange:"loadFile(event)"%>
       </div>
     </div>
     <!-- edit form column -->
     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-      <div class="alert alert-info alert-dismissable">
-        <a class="panel-close close" data-dismiss="alert">×</a> 
-        <i class="fa fa-coffee"></i>
-        This is an <strong>.alert</strong>. Use this to show important messages to the user.
-      </div>
+      
       <h3>Personal info</h3>
       <form class="form-horizontal" role="form">
         <div class="form-group">
@@ -82,15 +100,25 @@
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-          <input type="submit" class="btn btn-first", value="Save Changes">
+          <input type="submit" class="btn btn-first", value="Save Changes"> &nbsp &nbsp &nbsp
             <span></span>
-            <input class="btn btn-default" value="Cancel" type="reset">
+            <%= link_to "Back", :back %>
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+<script>
+var loadFile = function(event) {
+  var output = document.getElementById('image');
+  output.src = URL.createObjectURL(event.target.files[0]);
+  $('avatar img-responsive img-rounded')
+  .attr('image', e.target.result)
+  .width(150)
+  .height(200);
+  };
+</script>
 <%end%>
 </body>
 </html>
