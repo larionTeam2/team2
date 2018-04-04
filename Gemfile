@@ -5,8 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-#Gem Pagination
+gem 'activerecord-oracle_enhanced-adapter', '~> 1.8.0'
+gem 'ruby-oci8', '~> 2.2', '>= 2.2.5.1'
 
+#Gem Pagination
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
