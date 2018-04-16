@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>View It!</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -93,16 +93,16 @@ body {font-family: "Lato", sans-serif}
 </header>
 
 </div>
-<div>
-        <%= form_tag(search_path, :method => "get",
-        class: 'navbar-form navbar-left') do %>
-          <div class="input-group fieldsearch">
-            <%= search_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %>
-              <div class="input-group-btn">
-                <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search btnSearch', :name => nil %>
-              </div>
-          </div>
-        <% end %>
+<div class="">
+  <%= form_tag(search_path, :method => "get",
+  class: 'navbar-form navbar-left') do %>
+    <div class="input-group fieldsearch">
+      <%= search_field_tag :search, params[:search], placeholder: "Search...", class: "form-control" %>
+        <div class="input-group-btn">
+          <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search btnSearch', :name => nil %>
+        </div>
+    </div>
+  <% end %>
 </div>
 
 
